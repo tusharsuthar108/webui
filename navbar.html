@@ -1,0 +1,287 @@
+<!-- Font Awesome -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+
+  /* ---------- NAVBAR 1 ---------- */
+  .navbar1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 45px;
+    padding: 12px 40px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #fff;
+  }
+
+  .logo img {
+    height: 40px;
+  }
+
+  .search-box {
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 35px;
+    width: 500px;
+  }
+  .search-box input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    margin-left: 8px;
+  }
+
+  /* Right section */
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    font-size: 13px;
+  }
+  .nav-item {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #555;
+    position: relative;
+    padding: 3px 0;
+  }
+  .nav-item i {
+    font-size: 14px;
+    color: #7b7b7b;
+  }
+
+  /* Dropdown */
+  .drop {
+    display: none;
+    position: absolute;
+    top: 28px;
+    right: 0;
+    width: 160px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    z-index: 50;
+  }
+  .drop div {
+    padding: 9px 12px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #333;
+  }
+  .drop div:hover {
+    background: #f4f4f4;
+  }
+
+  /* ---------- NAVBAR 2 ---------- */
+  .navbar2 {
+    display: flex;
+    justify-content: center;
+    gap: 36px;
+    background: white;
+    padding: 10px 0;
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .navbar2-item {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .navbar2-item.open .submenu {
+    display: block;
+  }
+
+  .submenu {
+    display: none;
+    position: absolute;
+    top: 34px;
+    left: 0;
+    width: 260px;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    z-index: 50;
+  }
+  .submenu a {
+    display: block;
+    padding: 9px 16px;
+    font-size: 13px;
+    text-decoration: none;
+    color: #222;
+  }
+  .submenu a:hover {
+    background: #f5f5f5;
+  }
+
+  .navbar2-item:hover .submenu {
+    display: block;
+  }
+
+  /* Chevron */
+  .caret {
+    font-size: 11px;
+    color: #8a8a8a;
+    transition: 0.25s;
+  }
+  .navbar2-item:hover .caret,
+  .nav-item:hover .caret {
+    transform: rotate(180deg);
+    color: #d30000;
+  }
+</style>
+
+<!-- ---------- NAVBAR STRUCTURE ---------- -->
+<div class="navbar1">
+  <div class="logo">
+    <img src="https://stimg.cardekho.com/pwa/img/bikedekho-logo.svg" />
+  </div>
+
+  <div class="search-box">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input type="text" placeholder="Search Bikes or Scooters eg. Activa, R15" />
+  </div>
+
+  <div class="nav-actions">
+    <!-- Language -->
+    <div class="nav-item" onclick="toggleDrop('langDrop')">
+      <i class="fa-solid fa-language"></i>
+      <span id="langLabel">Language</span>
+      <i class="fa-solid fa-chevron-down caret"></i>
+      <div class="drop" id="langDrop">
+        <div onclick="setLanguage('English')">English</div>
+        <div onclick="setLanguage('Hindi')">Hindi</div>
+      </div>
+    </div>
+
+    <!-- User -->
+    <div class="nav-item">
+      <i class="fa-regular fa-user"></i>
+      Login / Register
+    </div>
+
+    <!-- City -->
+    <div class="nav-item" onclick="toggleDrop('cityDrop')">
+      <i class="fa-solid fa-location-dot"></i>
+      <span id="cityLabel">Vadodara</span>
+      <i class="fa-solid fa-chevron-down caret"></i>
+      <div class="drop" id="cityDrop">
+        <div onclick="setCity('Ahmedabad')">Ahmedabad</div>
+        <div onclick="setCity('Surat')">Surat</div>
+        <div onclick="setCity('Rajkot')">Rajkot</div>
+        <div onclick="setCity('Mumbai')">Mumbai</div>
+        <div onclick="setCity('Delhi')">Delhi</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="navbar2">
+  <div class="navbar2-item" onclick="toggleSubmenu(this)">
+    Bikes <i class="fa-solid fa-chevron-down caret"></i>
+    <div class="submenu">
+      <a>New Bikes</a><a>Best Bikes</a><a>Upcoming Bikes</a>
+      <a>New Bike Launches</a><a>Compare Bikes</a><a>Popular Brands</a>
+      <a>Bike Offers</a><a>Showrooms</a><a>Fuel Calculator</a>
+    </div>
+  </div>
+
+  <div class="navbar2-item" onclick="toggleSubmenu(this)">
+    Scooters <i class="fa-solid fa-chevron-down caret"></i>
+    <div class="submenu">
+      <a>New Scooters</a><a>Best Scooters</a><a>Upcoming Scooters</a>
+      <a>New Scooter Launches</a>
+    </div>
+  </div>
+
+  <div class="navbar2-item" onclick="toggleSubmenu(this)">
+    Electric Zone <i class="fa-solid fa-chevron-down caret"></i>
+    <div class="submenu">
+      <a>Electric Bikes</a><a>Electric Scooters</a><a>Electric Cycles</a>
+      <a>Electric Bike Charging Stations</a>
+    </div>
+  </div>
+
+  <div class="navbar2-item" onclick="toggleSubmenu(this)">
+    Bike Finance <i class="fa-solid fa-chevron-down caret"></i>
+    <div class="submenu">
+      <a>Finance Discount Offers</a><a>EMI Calculator</a>
+    </div>
+  </div>
+
+  <div class="navbar2-item" onclick="toggleSubmenu(this)">
+    Used Bikes <i class="fa-solid fa-chevron-down caret"></i>
+    <div class="submenu"><a>Search Used Bikes</a><a>Sell Bike</a></div>
+  </div>
+
+  <div class="navbar2-item" onclick="toggleSubmenu(this)">
+    News & Videos <i class="fa-solid fa-chevron-down caret"></i>
+    <div class="submenu">
+      <a>News & Top Stories</a><a>Videos</a><a>Web Stories</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleDrop(id) {
+    document.getElementById(id).style.display =
+      document.getElementById(id).style.display == "block" ? "none" : "block";
+  }
+  function setLanguage(lang) {
+    document.getElementById("langLabel").textContent = lang;
+    document.getElementById("langDrop").style.display = "none";
+  }
+  function setCity(city) {
+    document.getElementById("cityLabel").textContent = city;
+    document.getElementById("cityDrop").style.display = "none";
+  }
+</script>
+<script>
+  // Close all dropdowns except active one
+  function closeAllMenus() {
+    document
+      .querySelectorAll(".submenu")
+      .forEach((m) => (m.style.display = "none"));
+  }
+
+  // Toggle navbar2 dropdowns
+  function toggleSubmenu(el) {
+    // close if the same menu clicked
+    if (el.classList.contains("open")) {
+      el.classList.remove("open");
+      return;
+    }
+
+    // close others first
+    document
+      .querySelectorAll(".navbar2-item")
+      .forEach((item) => item.classList.remove("open"));
+
+    el.classList.add("open");
+  }
+
+  // Close dropdowns when clicking outside
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest(".navbar2") && !e.target.closest(".nav-item")) {
+      closeAllMenus();
+      document.getElementById("langDrop").style.display = "none";
+      document.getElementById("cityDrop").style.display = "none";
+    }
+  });
+</script>
