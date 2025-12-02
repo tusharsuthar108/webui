@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Royal Enfield GT 650</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --red: #d9302e;
+        --muted: #6b6b6b;
+        --card: #fff;
+        --bg: #f5f6f8;
+        --glass: rgba(255, 255, 255, 0.8);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+      }
+      body {
+        background: white;
+        color: #111;
+      }
+      .container {
+        max-width: 90%;
+        margin: 28px auto;
+        padding: 18px;
+        display: grid;
+        grid-template-columns: 1fr 380px;
+        gap: 20px;
+        align-items: start;
+      }
+      .left {
+        background: var(--card);
+        border-radius: 12px;
+        padding: 18px;
+        box-shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 360px 1fr;
+        gap: 18px;
+        align-items: start;
+      }
+
+      /* image panel */
+      .img-panel {
+        background: #f7f8fa;
+        border-radius: 10px;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        height: 420px;
+        overflow: hidden;
+      }
+
+      .main-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background: linear-gradient(180deg, #fff, #f0f2f4);
+        border-radius: 8px;
+      }
+
+      .img-actions {
+        display: flex;
+        gap: 8px;
+        margin-top: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .pill {
+        background: var(--glass);
+        border-radius: 999px;
+        padding: 6px 10px;
+        font-size: 13px;
+        color: #222;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      /* right hero */
+      .title-row {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .title-row h1 {
+        font-size: 22px;
+        margin: 0;
+        line-height: 1.3;
+      }
+      .rating {
+        color: #ffb703;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+      }
+      .price {
+        font-size: 20px;
+        color: var(--red);
+        font-weight: 600;
+        margin: 4px 0;
+      }
+      .cta {
+        display: flex;
+        gap: 12px;
+        margin-top: 8px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        background: var(--red);
+        color: #fff;
+        padding: 10px 14px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+      }
+      .btn:hover {
+        background: #b82827;
+        transform: translateY(-1px);
+      }
+      .btn.alt {
+        background: transparent;
+        color: var(--red);
+        border: 1px solid rgba(217, 48, 46, 0.3);
+      }
+      .btn.alt:hover {
+        background: rgba(217, 48, 46, 0.05);
+      }
+
+      /* cards */
+      .card {
+        background: var(--card);
+        border-radius: 10px;
+        padding: 16px;
+        margin-top: 18px;
+        border: 1px solid rgba(16, 24, 40, 0.03);
+      }
+      .card h3 {
+        margin: 0 0 8px 0;
+        font-size: 16px;
+        line-height: 1.4;
+      }
+      .card p {
+        color: var(--muted);
+        margin: 0 0 12px 0;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      .specs-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .spec {
+        background: #fbfbfb;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 13px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .spec span {
+        color: var(--muted);
+      }
+      .spec strong {
+        color: #111;
+        font-size: 15px;
+      }
+
+      /* price list */
+      .variants {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .variant {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px;
+        border-radius: 8px;
+        border: 1px solid rgba(16, 24, 40, 0.08);
+        gap: 16px;
+      }
+      .variant .meta {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+      .variant > div:last-child {
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-end;
+      }
+      .variant .btn {
+        padding: 6px 12px;
+        font-size: 13px;
+      }
+
+      /* right column */
+      .right {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .side-card {
+        background: var(--card);
+        border-radius: 12px;
+        padding: 16px;
+        border: 1px solid rgba(16, 24, 40, 0.03);
+        box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);
+      }
+      .side-card h4 {
+        margin: 0 0 12px 0;
+        font-size: 16px;
+        line-height: 1.4;
+      }
+      .side-card p {
+        color: var(--muted);
+        font-size: 13px;
+        margin: 0 0 12px 0;
+        line-height: 1.5;
+      }
+      .emi {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .emi .amount {
+        font-size: 18px;
+        color: #111;
+        font-weight: 700;
+        margin-top: 4px;
+      }
+      .nearby ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        max-height: 220px;
+        overflow: auto;
+      }
+      .nearby li {
+        padding: 10px 0;
+        border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .nearby li:last-child {
+        border-bottom: none;
+      }
+
+      /* Slider Arrow Buttons */
+      .slide-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.95);
+        border: none;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        cursor: pointer;
+        font-size: 16px;
+        transition: all 0.2s ease;
+        z-index: 5;
+      }
+      .slide-btn:hover {
+        background: #fff;
+        transform: translateY(-50%) scale(1.08);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+      }
+      .slide-btn.left {
+        left: 10px;
+      }
+      .slide-btn.right {
+        right: 10px;
+      }
+
+      .image-counter {
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 500;
+        z-index: 10;
+      }
+
+      .thumb-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        width: 100%;
+      }
+      .thumb-grid img {
+        width: 100%;
+        height: 70px;
+        object-fit: cover;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border: 2px solid transparent;
+      }
+      .thumb-grid img:hover {
+        transform: scale(1.05);
+        border-color: var(--red);
+      }
+      .re-section {
+        background: #fff;
+        padding: 30px;
+        border-radius: 20px;
+        margin: 30px 0;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .re-section h2 {
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .re-section p {
+        color: #555;
+        margin-bottom: 25px;
+      }
+
+      .re-slider {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        padding-bottom: 10px;
+      }
+
+      .re-card {
+        min-width: 300px;
+        background: #fff;
+        border-radius: 15px;
+        border: 1px solid #e5e5e5;
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        text-align: center;
+      }
+
+      .re-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+      }
+
+      .color-dots {
+        margin-top: 10px;
+      }
+
+      .color-dots span {
+        width: 18px;
+        height: 18px;
+        display: inline-block;
+        border-radius: 50%;
+        margin: 0 4px;
+        border: 2px solid #ddd;
+      }
+
+      .view-all {
+        color: #007bff;
+        display: inline-block;
+        margin-top: 20px;
+        font-weight: 600;
+      }
+      .arrow-btn {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        background: #fff;
+        border-radius: 50%;
+        border: 1px solid #ccc;
+        font-size: 22px;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+      }
+      .color-dots span {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 4px;
+        border: 2px solid transparent;
+        cursor: pointer;
+      }
+
+      .color-dots span.active {
+        border: 2px solid black;
+      }
+      .slider-component {
+        position: relative;
+        width: 100%;
+
+        overflow: hidden;
+        border-radius: 10px;
+      }
+
+      .slider-component .slides {
+        display: flex;
+        transition: transform 0.4s ease-in-out;
+      }
+
+      .slider-component img {
+        width: 100%;
+        flex-shrink: 0;
+        border-radius: 10px;
+      }
+
+      /* arrows */
+      .slider-component .prev-btn,
+      .slider-component .next-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #00000080;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        font-size: 22px;
+        cursor: pointer;
+        border-radius: 50%;
+      }
+
+      .slider-component .prev-btn {
+        left: 10px;
+      }
+      .slider-component .next-btn {
+        right: 10px;
+      }
+      /* FULL SCREEN IMAGE VIEWER */
+      #fullscreen-view {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.3s ease;
+      }
+
+      #fullscreen-view img {
+        max-width: 92%;
+        max-height: 92%;
+        border-radius: 10px;
+      }
+
+      #close-fullscreen {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        font-size: 40px;
+        color: white;
+        cursor: pointer;
+      }
+
+      .fullscreen-visible {
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+
+      .fullscreen-hidden {
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      /* responsive */
+      @media (max-width: 1000px) {
+        .container {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          grid-template-columns: 1fr;
+        }
+        .img-panel {
+          width: 100%;
+        }
+        .specs-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .thumb-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar"></div>
+
+    <div class="container">
+      <div class="left">
+        <div class="hero">
+          <div style="display: flex; flex-direction: column; gap: 18px">
+            <div class="img-panel">
+              <div class="image-counter" id="imageCounter">1 / 24</div>
+
+              <button class="slide-btn left" onclick="prevImage()">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+
+              <img
+                class="main-img"
+                id="mainImage"
+                src="/webui/royal-enfield/images/re_gt_homepic.avif"
+                alt="Royal Enfield"
+              />
+
+              <button class="slide-btn right" onclick="nextImage()">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+
+              <div class="img-actions">
+                <span class="pill"
+                  ><i class="fa-regular fa-images"></i>
+                  <a href="#img" style="text-decoration: none; color: inherit"
+                    >Images</a
+                  ></span
+                >
+                <span class="pill"
+                  ><i class="fa-solid fa-droplet"></i>
+                  <a href="#clrs" style="text-decoration: none; color: inherit"
+                    >5 Colors</a
+                  ></span
+                >
+                <span class="pill">
+                  <i class="fa-solid fa-video"></i>
+                  <a
+                    href="https://youtu.be/YfevVPwrHGQ?list=TLGGZdg_VCLbD_gyNzExMjAyNQ"
+                    target="_blank"
+                    style="text-decoration: none; color: inherit"
+                  >
+                    Videos
+                  </a>
+                </span>
+
+                <span class="pill">
+                  <i class="fa-solid fa-circle-nodes"></i>
+                  <a
+                    href="/webui/royal-enfield/gt_3d.html"
+                    style="text-decoration: none; color: inherit"
+                    target="_parent"
+                    >360° View</a
+                  >
+                </span>
+              </div>
+            </div>
+
+            <div id="img" class="img-panel" style="height: auto; padding: 14px">
+              <h3
+                style="
+                  font-size: 15px;
+                  margin: 0 0 12px 0;
+                  color: var(--muted);
+                  width: 100%;
+                  text-align: left;
+                "
+              >
+                More Images
+              </h3>
+              <div class="thumb-grid" id="thumbnailGrid"></div>
+            </div>
+
+            <!-- COLOR TEMPLATE: single copy to be cloned into each card -->
+            <div id="color-template" style="display: none">
+              <div class="color-dots">
+                <span data-color="grey" style="background: #999"></span>
+                <span data-color="blue" style="background: #2c92e8"></span>
+                <span data-color="red" style="background: #c00"></span>
+                <span
+                  data-color="green"
+                  style="background: rgb(10, 66, 10)"
+                ></span>
+                <span data-color="apex" style="background: #9ba0a6"></span>
+              </div>
+            </div>
+
+            <section id="clrs" class="re-section">
+              <h2>Royal Enfield Continental GT 650 Colours</h2>
+              <p>
+                Royal Enfield Continental GT 650 is available in the following
+                colours in India. View all bike images with different colour
+                options.
+              </p>
+
+              <div class="re-slider">
+                <div class="re-card">
+                  <img
+                    src="/webui/royal-enfield/images/re_gt_mrcleanclr.avif"
+                    alt="Mr Clean"
+                  />
+                  <h4>Mr Clean</h4>
+                </div>
+
+                <div class="re-card">
+                  <img
+                    src="/webui/royal-enfield/images/re_gt_blue.avif"
+                    alt="Slipstream Blue"
+                  />
+                  <h4>Slipstream Blue</h4>
+                </div>
+
+                <div class="re-card">
+                  <img
+                    src="/webui/royal-enfield/images/re_gt_red.avif"
+                    alt="Rocker Red"
+                  />
+                  <h4>Rocker Red</h4>
+                </div>
+
+                <div class="re-card">
+                  <img
+                    src="/webui/royal-enfield/images/re_gt_green.avif"
+                    alt="British Racing Green"
+                  />
+                  <h4>British Racing Green</h4>
+                </div>
+
+                <div class="re-card">
+                  <img
+                    src="/webui/royal-enfield/images/re_gt_gray.avif"
+                    alt="Apex Gray"
+                  />
+                  <h4>Apex Gray</h4>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div>
+            <div class="title-row">
+              <h1>Royal Enfield Continental GT 650</h1>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>4.4
+                <span style="color: var(--muted); font-size: 13px"
+                  >· 1.18k Reviews · Write Review</span
+                >
+              </div>
+              <div class="price">
+                ₹3,49,609<small
+                  style="color: var(--muted); font-size: 13px; font-weight: 400"
+                  >&nbsp;Onwards</small
+                >
+              </div>
+              <div class="cta">
+                <a href="/webui/royal-enfield/re_gt_offers.html"><button class="btn">View December Offers</button></a>
+                <a href="/webui/royal-enfield/re_gt_emi.html"><button class="btn alt">Get On Road Price</button></a>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Key Specs & Features of Royal Enfield Continental GT 650</h3>
+              <p>
+                Compact design, modern styling, and responsive engine suited for
+                city riding.
+              </p>
+              <div class="specs-grid">
+                <div class="spec">
+                  <span>Engine</span><strong>650 cc</strong>
+                </div>
+                <div class="spec">
+                  <span>Power</span><strong>47.6 PS</strong>
+                </div>
+                <div class="spec">
+                  <span>Torque</span><strong>52 Nm</strong>
+                </div>
+                <div class="spec">
+                  <span>Mileage</span><strong>27 kmpl</strong>
+                </div>
+                <div class="spec">
+                  <span>Kerb Weight</span><strong>214 kg</strong>
+                </div>
+                <div class="spec">
+                  <span>Brakes</span><strong>Double Disc</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Royal Enfield Continental GT 650 Price</h3>
+              <p>
+                The price of Royal Enfield Continental GT 650 in India starts at
+                ₹3,49,609 and goes up to ₹3,78,883. Gt Continental comes with 3
+                variants.
+              </p>
+
+              <div class="variants">
+                <div class="variant">
+                  <div>
+                    <div style="font-weight: 600">
+                      Royal Enfield Continental GT 650 Rocher Red
+                    </div>
+                    <div class="meta">170 kmph · 28.2 kmpl · 650 cc</div>
+                  </div>
+                  <div>
+                    <div style="font-weight: 700">₹3,49,600</div>
+                    <a href="/webui/royal-enfield/re_gt_offers.html"><button
+                      class="btn alt"
+                      onclick="alert('View offers for Base')"
+                    >
+                      View Offers
+                    </button></a>
+                  </div>
+                </div>
+
+                <div class="variant">
+                  <div>
+                    <div style="font-weight: 600">
+                      Royal Enfield Continental GT 650 British Racing Green
+                    </div>
+                    <div class="meta">170 kmph · 28.2 kmpl · 650 cc</div>
+                  </div>
+                  <div>
+                    <div style="font-weight: 700">₹3,62,292</div>
+                    <a href="/webui/royal-enfield/re_gt_offers.html"><button
+                      class="btn alt"
+                      onclick="alert('View offers for Base')"
+                    >
+                      View Offers
+                    </button></a>
+                  </div>
+                </div>
+
+                <div class="variant">
+                  <div>
+                    <div style="font-weight: 600">
+                      Royal Enfield Continental GT 650 Apex Gray
+                    </div>
+                    <div class="meta">170 kmph · 28.2 kmpl · 650 cc</div>
+                  </div>
+                  <div>
+                    <div style="font-weight: 700">₹3,71,883</div>
+                    <a href="/webui/royal-enfield/re_gt_offers.html"><button
+                      class="btn alt"
+                      onclick="alert('View offers for Base')"
+                    >
+                      View Offers
+                    </button></a>
+                  </div>
+                </div>
+              </div>
+              <section class="re-section">
+                <h2>Royal Enfield Continental GT 650</h2>
+                <p>
+                  Royal Enfield Continental GT 650 has Features shown images,
+                  view picture gallery of GT 650 features.
+                </p>
+
+                <div class="image-slider slider-component">
+                  <div class="slides">
+                    <img src="/webui/royal-enfield/images/re_gt_blue.avif" />
+                    <img
+                      src="/webui/royal-enfield/images/re_gt_frontleftview.avif"
+                      alt=""
+                    />
+                    <img
+                      src="/webui/royal-enfield/images/re_gt_enginright.avif"
+                    />
+                    <img src="/webui/royal-enfield/images/re_gt_exhaust.avif" />
+                    <img
+                      src="/webui/royal-enfield/images/re_gt_fueltank.avif"
+                      alt=""
+                    />
+                    <img
+                      src="/webui/royal-enfield/images/re_gt_headlamp.avif"
+                      alt=""
+                    />
+                    <img
+                      src="/webui/royal-enfield/images/re_gt_reartyre.avif"
+                      alt=""
+                    />
+                    <img
+                      src="/webui/royal-enfield/images/re_gt_seat.avif"
+                      alt=""
+                    />
+                    <img
+                      src="/webui/royal-enfield/images/re_gt_sideview.avif"
+                      alt=""
+                    />
+                    <img
+                      src="/webui/royal-enfield/images/re_gt_taillamp.avif"
+                      alt=""
+                    />
+                    <img
+                      src="/webui/royal-enfield/images/re_gt_enginright.avif"
+                      alt=""
+                    />
+                  </div>
+
+                  <!-- Navigation arrows -->
+                  <button class="prev-btn">&#10094;</button>
+                  <button class="next-btn">&#10095;</button>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="side-card">
+          <h4>Calculate EMI</h4>
+          <div class="emi">
+            <div>
+              <div style="color: var(--muted); font-size: 13px">
+                Your monthly EMI
+              </div>
+              <div class="amount">
+                ₹4,527<small
+                  style="color: var(--muted); font-size: 12px; font-weight: 400"
+                >
+                  /month</small
+                >
+              </div>
+            </div>
+            <div>
+              <a href="/webui/finance.html"><button class="btn">View Finance Offers</button><button class="btn">View Finance Offers</button></a>
+            </div>
+          </div>
+          <p style="margin-top: 10px">
+            Interest calculated at 9.7% for 36 months.
+          </p>
+        </div>
+
+        <div class="side-card">
+          <h4>Royal Enfield Continental GT 650 Brochure</h4>
+          <p>
+            Download the GT 650 brochure for comprehensive details on technical
+            specifications, features, variants and available colours.
+          </p>
+          <button class="btn">Download Brochure</button>
+        </div>
+
+        <div class="side-card">
+          <h4>GT 650 Price Nearby Vadodara</h4>
+          <div class="nearby">
+            <ul>
+              <li><strong>Padra</strong><span>₹2,56,903</span></li>
+              <li><strong>Kariyan</strong><span>₹2,56,903</span></li>
+              <li><strong>Dahej</strong><span>₹2,56,903</span></li>
+              <li><strong>Anand</strong><span>₹2,56,903</span></li>
+              <li><strong>Halol</strong><span>₹2,56,903</span></li>
+              <li><strong>Kalol</strong><span>₹2,56,903</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FULL SCREEN IMAGE VIEWER -->
+    <div id="fullscreen-view" class="fullscreen-hidden">
+      <span id="close-fullscreen">&times;</span>
+      <img id="fullscreen-img" src="" alt="" />
+    </div>
+
+    <div id="footer"></div>
+
+    <script>
+      const images = [
+        "/webui/royal-enfield/images/re_gt_homepic.avif",
+        "/webui/royal-enfield/images/re_gt_mrcleanclr.avif",
+        "/webui/royal-enfield/images/re_gt_blue.avif",
+        "/webui/royal-enfield/images/re_gt_red.avif",
+        "/webui/royal-enfield/images/re_gt_green.avif",
+        "/webui/royal-enfield/images/re_gt_gray.avif",
+        "/webui/royal-enfield/images/re_gt_frontleftview.avif",
+        "/webui/royal-enfield/images/re_gt_enginright.avif",
+        "/webui/royal-enfield/images/re_gt_exhaust.avif",
+        "/webui/royal-enfield/images/re_gt_fueltank.avif",
+        "/webui/royal-enfield/images/re_gt_headlamp.avif",
+        "/webui/royal-enfield/images/re_gt_reartyre.avif",
+        "/webui/royal-enfield/images/re_gt_seat.avif",
+        "/webui/royal-enfield/images/re_gt_sideview.avif",
+        "/webui/royal-enfield/images/re_gt_taillamp.avif",
+        "/webui/royal-enfield/images/re_gt_enginright.avif",
+      ];
+
+      let current = 0;
+
+      function updateImage() {
+        document.getElementById("mainImage").src = images[current];
+        document.getElementById("imageCounter").innerText =
+          current + 1 + " / " + images.length;
+      }
+
+      function nextImage() {
+        current = (current + 1) % images.length;
+        updateImage();
+      }
+
+      function prevImage() {
+        current = (current - 1 + images.length) % images.length;
+        updateImage();
+      }
+
+      const thumbGrid = document.getElementById("thumbnailGrid");
+      images.forEach((imgSrc, index) => {
+        const img = document.createElement("img");
+        img.src = imgSrc;
+        img.onclick = () => {
+          current = index;
+          updateImage();
+        };
+        thumbGrid.appendChild(img);
+      });
+    </script>
+
+    <script>
+      function slideLeft(el) {
+        el.parentElement
+          .querySelector(".re-slider")
+          .scrollBy({ left: -300, behavior: "smooth" });
+      }
+      function slideRight(el) {
+        el.parentElement
+          .querySelector(".re-slider")
+          .scrollBy({ left: 300, behavior: "smooth" });
+      }
+    </script>
+
+    <script>
+      // color -> image mapping (unique keys)
+      const colorImages = {
+        gray: "/webui/royal-enfield/images/re_gt_mrcleanclr.avif",
+        blue: "/webui/royal-enfield/images/re_gt_blue.avif",
+        red: "/webui/royal-enfield/images/re_gt_red.avif",
+        green: "/webui/royal-enfield/images/re_gt_green.avif",
+        apex: "/webui/royal-enfield/images/re_gt_gray.avif",
+      };
+
+      const colorNames = {
+        gray: "Mr Clean",
+        blue: "Slipstream Blue",
+        red: "Rocker Red",
+        green: "British Racing Green",
+        apex: "Apex Gray",
+      };
+
+      // Insert color dots into every .re-card and wire up click handlers
+      (function attachColorDotsToCards() {
+        // template must exist
+        const template = document.querySelector("#color-template .color-dots");
+        if (!template) return;
+
+        // target each card in the colours slider (.re-card)
+        document.querySelectorAll(".re-card").forEach((card) => {
+          // clone the template
+          const dots = template.cloneNode(true);
+
+          // append after the image/title
+          card.appendChild(dots);
+
+          // set first dot active by default
+          const firstDot = dots.querySelector("span[data-color]");
+          if (firstDot) firstDot.classList.add("active");
+
+          // find the card image and title (works with your existing markup)
+          const imgEl = card.querySelector("img");
+          const titleEl = card.querySelector("h4");
+
+          // click handler for each dot
+          dots.querySelectorAll("span[data-color]").forEach((dot) => {
+            dot.addEventListener("click", function () {
+              const colorKey = this.getAttribute("data-color");
+
+              // update image if mapping exists
+              if (colorImages[colorKey] && imgEl) {
+                imgEl.src = colorImages[colorKey];
+              }
+
+              // update title if mapping exists
+              if (colorNames[colorKey] && titleEl) {
+                titleEl.textContent = colorNames[colorKey];
+              }
+
+              // update active state
+              dots
+                .querySelectorAll("span")
+                .forEach((s) => s.classList.remove("active"));
+              this.classList.add("active");
+            });
+          });
+        });
+      })();
+    </script>
+    <script>
+      document.querySelectorAll(".slider-component").forEach((slider) => {
+        const slides = slider.querySelector(".slides");
+        const images = slider.querySelectorAll("img");
+
+        let index = 0;
+
+        function showSlide(i) {
+          index = (i + images.length) % images.length;
+          slides.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        slider.querySelector(".prev-btn").onclick = () => showSlide(index - 1);
+        slider.querySelector(".next-btn").onclick = () => showSlide(index + 1);
+      });
+    </script>
+    <script>
+      // Fullscreen image view
+      document.querySelectorAll(".re-card img").forEach((img) => {
+        img.addEventListener("click", function () {
+          const full = document.getElementById("fullscreen-img");
+          const viewer = document.getElementById("fullscreen-view");
+
+          full.src = this.src;
+          viewer.classList.remove("fullscreen-hidden");
+          viewer.classList.add("fullscreen-visible");
+        });
+      });
+
+      // Close full-screen
+      document
+        .getElementById("close-fullscreen")
+        .addEventListener("click", () => {
+          const viewer = document.getElementById("fullscreen-view");
+          viewer.classList.remove("fullscreen-visible");
+          viewer.classList.add("fullscreen-hidden");
+        });
+
+      // Close if clicked outside image
+      document
+        .getElementById("fullscreen-view")
+        .addEventListener("click", (e) => {
+          if (e.target.id === "fullscreen-view") {
+            const viewer = document.getElementById("fullscreen-view");
+            viewer.classList.remove("fullscreen-visible");
+            viewer.classList.add("fullscreen-hidden");
+          }
+        });
+    </script>
+
+    <script>
+      fetch("/webui/navbar.html")
+        .then((res) => res.text())
+        .then((data) => (document.getElementById("navbar").innerHTML = data));
+    </script>
+
+    <script>
+      fetch("/webui/footer.html")
+        .then((res) => res.text())
+        .then((data) => (document.getElementById("footer").innerHTML = data));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bike Offers — Demo</title>
+  <style>
+    :root{--brand-orange:#a40606;--bg:#f7f7f8;--card:#fff;--max-w:1100px;--muted:#6b6b6b}
+    body{margin:0;background:var(--bg);font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:#111}
+
+    .topbar{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:40}
+    .container{max-width:var(--max-w);margin:0 auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
+    .nav a{padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--muted);font-weight:600}
+
+    .hero{max-width:var(--max-w);margin:18px auto;padding:0 18px}
+    .offers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media (max-width:1000px){ .offers-grid{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:600px){ .offers-grid{grid-template-columns:1fr} }
+
+    .offer-card{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.04);display:flex;gap:12px;align-items:center}
+    .offer-card img{width:130px;height:90px;object-fit:cover;border-radius:8px}
+
+    .tag{background:rgba(255,106,0,0.12);color:var(--brand-orange);padding:6px 8px;border-radius:8px;font-weight:700;font-size:13px}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* NEW BUTTON STYLE */
+    .chip{
+      padding:8px 14px;
+      border-radius:10px;
+      border:1px solid #ddd;
+      background:#fff;
+      cursor:pointer;
+      font-size:14px;
+      transition:all .25s ease;
+    }
+
+    .chip:hover{
+      border-color:var(--brand-orange);
+      background:var(--brand-orange);
+      color:#fff;
+      box-shadow:0 4px 10px rgba(164, 6, 6, 0.25);
+    }
+  </style>
+</head>
+<body>
+    <div id="navbar"></div>
+
+  <main class="hero">
+    <h2 style="margin:8px 18px">Current Offers & Deals</h2>
+    <section class="offers-grid" id="offersGrid" style="padding:0 18px 40px;margin-top:12px">
+      <!-- JS populated -->
+    </section>
+  </main>
+    <div id="footer"></div>
+
+  <script>
+    const offers = [
+      {title:'Special EMI offer on Cruiser 350',img:'/webui/images/avenger_cruise.avif',tag:'EMI',desc:'6 months @ 0% interest',valid:'Valid till 30 Nov 2025'},
+      {title:'Exchange bonus on Hunter 350',img:'/webui/royal-enfield/images/re_hunter_londonred.avif',tag:'Exchange',desc:'Up to ₹7,000 off',valid:'Valid till 31 Dec 2025'},
+      {title:'Festival cashback on Classic 350',img:'/webui/images/re_classic350.avif',tag:'Cashback',desc:'₹5,000 instant cashback',valid:'Valid till 15 Dec 2025'},
+      {title:'Free accessories on Bullet 350',img:'/webui/images/re_bullet350.avif',tag:'Accessories',desc:'Helmet + jacket free',valid:'Limited period'},
+      {title:'Long-term warranty on Vintage 650',img:'/webui/images/tvs_ronin.avif',tag:'Warranty',desc:'5-year extended warranty',valid:'Contact dealer'}
+    ];
+
+    function renderOffers(){
+      const grid = document.getElementById('offersGrid');
+      offers.forEach(o=>{
+        const card = document.createElement('article');
+        card.className='offer-card';
+        card.innerHTML = `
+          <img src="${o.img}" alt="">
+          <div style="flex:1">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+              <div>
+                <h3 style="margin:0 0 6px">${o.title}</h3>
+                <div class="small">${o.desc}</div>
+              </div>
+              <div style="text-align:right">
+                <div class="tag">${o.tag}</div>
+                <div style="font-size:12px;color:var(--muted);margin-top:8px">${o.valid}</div>
+              </div>
+            </div>
+            <div style="margin-top:12px;display:flex;gap:8px">
+              <a href="newbikes.html" class="chip" style="text-decoration:none;">View Bike</a>
+              <button class="chip" onclick="saveOffer('${o.title}')">Save</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function saveOffer(title){ alert('Saved: '+title) }
+    renderOffers();
+  </script>
+
+  <script>
+      fetch("/webui/navbar.html")
+        .then((res) => res.text())
+        .then((data) => (document.getElementById("navbar").innerHTML = data));
+  </script>
+
+  <script>
+      fetch("/webui/footer.html")
+        .then((res) => res.text())
+        .then((data) => (document.getElementById("footer").innerHTML = data));
+  </script>
+
+</body>
+</html>

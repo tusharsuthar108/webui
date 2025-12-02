@@ -57,7 +57,7 @@
     gap: 5px;
     color: #555;
     position: relative;
-    padding: 3px 0;
+    padding: 8px 12px;
   }
   .nav-item i {
     font-size: 14px;
@@ -68,22 +68,35 @@
   .drop {
     display: none;
     position: absolute;
-    top: 28px;
+    top: 100%;
     right: 0;
     width: 160px;
     background: white;
     border: 1px solid #ddd;
     border-radius: 6px;
     z-index: 50;
+    margin-top: 5px;
+    min-width: 180px;
   }
   .drop div {
-    padding: 9px 12px;
+    padding: 10px 14px;
     cursor: pointer;
     font-size: 13px;
     color: #333;
+    white-space: nowrap;
   }
   .drop div:hover {
     background: #f4f4f4;
+  }
+
+  /* Show dropdown on nav-item hover */
+  .nav-item:hover .drop {
+    display: block;
+  }
+
+  /* Keep dropdown visible when hovering over it */
+  .drop:hover {
+    display: block;
   }
 
   /* ---------- NAVBAR 2 ---------- */
@@ -103,21 +116,20 @@
     display: flex;
     align-items: center;
     gap: 4px;
-  }
-  .navbar2-item.open .submenu {
-    display: block;
+    padding: 12px 8px;
   }
 
   .submenu {
     display: none;
     position: absolute;
-    top: 34px;
+    top: 100%;
     left: 0;
     width: 260px;
     background: #fff;
     border: 1px solid #ddd;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
     z-index: 50;
+    margin-top: 0;
   }
   .submenu a {
     display: block;
@@ -125,13 +137,70 @@
     font-size: 13px;
     text-decoration: none;
     color: #222;
+    position: relative;
   }
   .submenu a:hover {
     background: #f5f5f5;
   }
 
+  /* FIXED: Keep submenu visible */
   .navbar2-item:hover .submenu {
     display: block;
+  }
+
+  /* Wrapper for sub-submenu */
+  .submenu-wrapper {
+    position: relative;
+    width: 100%;
+  }
+  .submenu-wrapper > a {
+    display: block;
+    padding: 9px 16px;
+    font-size: 13px;
+    text-decoration: none;
+    color: #222;
+    position: relative;
+  }
+  .submenu-wrapper > a:hover {
+    background: #f5f5f5;
+  }
+
+  /* Sub-submenu styling */
+  .sub-submenu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 260px;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    z-index: 51;
+    margin: 0;
+  }
+  .sub-submenu a {
+    display: block;
+    padding: 9px 16px;
+    font-size: 13px;
+    text-decoration: none;
+    color: #222;
+  }
+  .sub-submenu a:hover {
+    background: #f5f5f5;
+  }
+
+  /* Show sub-submenu on wrapper hover */
+  .submenu-wrapper:hover .sub-submenu {
+    display: block;
+  }
+
+  /* Arrow indicator */
+  .submenu-wrapper > a::after {
+    content: "›";
+    position: absolute;
+    right: 12px;
+    font-size: 18px;
+    color: #999;
   }
 
   /* Chevron */
@@ -160,24 +229,24 @@
 
   <div class="nav-actions">
     <!-- Language -->
-    <div class="nav-item" onclick="toggleDrop('langDrop')">
+    <div class="nav-item">
       <i class="fa-solid fa-language"></i>
       <span id="langLabel">Language</span>
       <i class="fa-solid fa-chevron-down caret"></i>
       <div class="drop" id="langDrop">
         <div onclick="setLanguage('English')">English</div>
-        <div onclick="setLanguage('Hindi')">Hindi</div>
+        <div onclick="setLanguage('Hindi')">हिंदी</div>
       </div>
     </div>
 
     <!-- User -->
     <div class="nav-item">
       <i class="fa-regular fa-user"></i>
-      Login / Register
+      <span>Login / Register</span>
     </div>
 
     <!-- City -->
-    <div class="nav-item" onclick="toggleDrop('cityDrop')">
+    <div class="nav-item">
       <i class="fa-solid fa-location-dot"></i>
       <span id="cityLabel">Vadodara</span>
       <i class="fa-solid fa-chevron-down caret"></i>
@@ -187,101 +256,93 @@
         <div onclick="setCity('Rajkot')">Rajkot</div>
         <div onclick="setCity('Mumbai')">Mumbai</div>
         <div onclick="setCity('Delhi')">Delhi</div>
+        <div onclick="setCity('Pune')">Pune</div>
+        <div onclick="setCity('Bangalore')">Bangalore</div>
       </div>
     </div>
   </div>
 </div>
 
 <div class="navbar2">
-  <div class="navbar2-item" onclick="toggleSubmenu(this)">
+  <div class="navbar2-item">
     Bikes <i class="fa-solid fa-chevron-down caret"></i>
     <div class="submenu">
-      <a>New Bikes</a><a>Best Bikes</a><a>Upcoming Bikes</a>
-      <a>New Bike Launches</a><a>Compare Bikes</a><a>Popular Brands</a>
-      <a>Bike Offers</a><a>Showrooms</a><a>Fuel Calculator</a>
+      <a href="/webui/newbikes.html">New Bikes</a>
+      <div class="submenu-wrapper">
+        <a href="#">Best Bikes</a>
+        <div class="sub-submenu">
+          <a href="/webui/royal-enfield/royal-enfield.html">Royal Enfield Hunter 350</a>
+          <a href="/webui/royal-enfield/re_gtcontinental.html">Royal Enfield Continental GT 650</a>
+          <a href="/webui//herobikes/splendor_plus.html">Hero Splendor Plus</a>
+          <a href="#">Hero Splendor Plus XTEC</a>
+          <a href="#">Royal Enfield Bullet 350</a>
+          <a href="#">All Best Bikes</a>
+        </div>
+      </div>
+      <a href="/webui/upcoming/upcoming.html">Upcoming Bikes</a>
+      
+      
+      <a href="/webui/popularbrands.html">Popular Brands</a>
+      <a href="/webui/bikeoffers.html">Bike Offers</a>
+      <a href="/webui/showrooms.html">Showrooms</a>
+      
     </div>
   </div>
 
-  <div class="navbar2-item" onclick="toggleSubmenu(this)">
+  <div class="navbar2-item">
     Scooters <i class="fa-solid fa-chevron-down caret"></i>
     <div class="submenu">
-      <a>New Scooters</a><a>Best Scooters</a><a>Upcoming Scooters</a>
-      <a>New Scooter Launches</a>
+      <a href="/webui/Scooters/new_scooters.html">New Scooters</a>
+      <a href="#">Best Scooters</a>
+      <a href="#">Upcoming Scooters</a>
+      <a href="#">New Scooter Launches</a>
     </div>
   </div>
 
-  <div class="navbar2-item" onclick="toggleSubmenu(this)">
+  <div class="navbar2-item">
     Electric Zone <i class="fa-solid fa-chevron-down caret"></i>
     <div class="submenu">
-      <a>Electric Bikes</a><a>Electric Scooters</a><a>Electric Cycles</a>
-      <a>Electric Bike Charging Stations</a>
+      <a href="#">Electric Bikes</a>
+      <a href="#">Electric Scooters</a>
+      <a href="#">Electric Cycles</a>
+      <a href="#">Electric Bike Charging Stations</a>
     </div>
   </div>
 
-  <div class="navbar2-item" onclick="toggleSubmenu(this)">
+  <div class="navbar2-item">
     Bike Finance <i class="fa-solid fa-chevron-down caret"></i>
     <div class="submenu">
-      <a>Finance Discount Offers</a><a>EMI Calculator</a>
+      <a href="/webui/finance.html">Finance Discount Offers</a>
+      
     </div>
   </div>
 
-  <div class="navbar2-item" onclick="toggleSubmenu(this)">
+  <div class="navbar2-item">
     Used Bikes <i class="fa-solid fa-chevron-down caret"></i>
-    <div class="submenu"><a>Search Used Bikes</a><a>Sell Bike</a></div>
+    <div class="submenu">
+      <a href="#">Search Used Bikes</a>
+      <a href="#">Sell Bike</a>
+    </div>
   </div>
 
-  <div class="navbar2-item" onclick="toggleSubmenu(this)">
+  <div class="navbar2-item">
     News & Videos <i class="fa-solid fa-chevron-down caret"></i>
     <div class="submenu">
-      <a>News & Top Stories</a><a>Videos</a><a>Web Stories</a>
+      <a href="#">News & Top Stories</a>
+      <a href="#">Videos</a>
+      <a href="#">Web Stories</a>
     </div>
   </div>
 </div>
 
 <script>
-  function toggleDrop(id) {
-    document.getElementById(id).style.display =
-      document.getElementById(id).style.display == "block" ? "none" : "block";
-  }
   function setLanguage(lang) {
     document.getElementById("langLabel").textContent = lang;
-    document.getElementById("langDrop").style.display = "none";
   }
   function setCity(city) {
     document.getElementById("cityLabel").textContent = city;
-    document.getElementById("cityDrop").style.display = "none";
   }
 </script>
-<script>
-  // Close all dropdowns except active one
-  function closeAllMenus() {
-    document
-      .querySelectorAll(".submenu")
-      .forEach((m) => (m.style.display = "none"));
-  }
 
-  // Toggle navbar2 dropdowns
-  function toggleSubmenu(el) {
-    // close if the same menu clicked
-    if (el.classList.contains("open")) {
-      el.classList.remove("open");
-      return;
-    }
-
-    // close others first
-    document
-      .querySelectorAll(".navbar2-item")
-      .forEach((item) => item.classList.remove("open"));
-
-    el.classList.add("open");
-  }
-
-  // Close dropdowns when clicking outside
-  document.addEventListener("click", function (e) {
-    if (!e.target.closest(".navbar2") && !e.target.closest(".nav-item")) {
-      closeAllMenus();
-      document.getElementById("langDrop").style.display = "none";
-      document.getElementById("cityDrop").style.display = "none";
-    }
-  });
-</script>
+  </body>
+</html>

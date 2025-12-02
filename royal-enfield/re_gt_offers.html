@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Offer Forms</title>
+
+    <!-- Google Font (BikeDekho uses Inter/Rubik/Roboto mix) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background: #f5f5f5;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 520px;
+        margin: 20px auto;
+        background: #fff;
+        padding: 22px;
+        border-radius: 12px;
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        margin-top: 0;
+        font-size: 22px;
+        font-weight: 600;
+        color: #222;
+      }
+
+      p.subtitle {
+        margin: 6px 0 16px 0;
+        font-size: 14px;
+        color: #444;
+      }
+
+      .row {
+        margin-bottom: 14px;
+      }
+
+      .input-box {
+        width: 95%;
+        padding: 12px;
+        border: 1px solid #bbb;
+        border-radius: 8px;
+        font-size: 15px;
+      }
+
+      .edit-btn {
+        color: #a50404;
+        font-size: 14px;
+        margin-left: 6px;
+        cursor: pointer;
+      }
+
+      .radio-group {
+        display: flex;
+        gap: 15px;
+        margin: 10px 0;
+        font-size: 15px;
+      }
+
+      .btn-main {
+        width: 100%;
+        padding: 14px;
+        font-size: 17px;
+        background: #e60000;
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        cursor: pointer;
+        margin-top: 12px;
+      }
+
+      .btn-main:hover {
+        background: #c40000;
+      }
+
+      /* THANK YOU PAGE */
+      #form2 {
+        display: none;
+      }
+
+      .thank-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .offer-card {
+        background: #fff;
+        padding: 16px;
+        border-radius: 10px;
+        margin-bottom: 18px;
+        border: 1px solid #ddd;
+      }
+
+      .offer-card h3 {
+        margin: 0 0 6px 0;
+        font-size: 18px;
+      }
+
+      .offer-card p {
+        margin: 0 0 6px 0;
+        font-size: 14px;
+        color: #444;
+        line-height: 1.4;
+      }
+
+      .valid {
+        color: green;
+        font-size: 13px;
+      }
+
+      /* BIKE CARDS */
+      .bike-section-title {
+        font-size: 20px;
+        font-weight: 600;
+        margin: 20px 0 10px;
+      }
+
+      .bike-card {
+        display: flex;
+        align-items: center;
+        background: #fff;
+        border-radius: 10px;
+        padding: 14px;
+        margin-bottom: 14px;
+        border: 1px solid #ddd;
+        gap: 14px;
+      }
+
+      .bike-card img {
+        width: 90px;
+        height: auto;
+        border-radius: 8px;
+      }
+
+      .bike-info {
+        flex: 1;
+      }
+
+      .price {
+        font-size: 15px;
+        margin-bottom: 6px;
+        color: #444;
+      }
+
+      .small-btn {
+        background: #e00808;
+        color: #fff;
+        border: none;
+        padding: 8px 14px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .small-btn:hover {
+        background: #a5b0bf;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar"></div>
+    <!-- ===================== FORM 1 ===================== -->
+    <div class="container" id="form1">
+      <h2>Get Best December Offers on Royal Enfield GT 650</h2>
+      <p class="subtitle">
+        We only ask these once and your details are safe with us.
+      </p>
+
+      <div class="row">
+        <div class="input-box">
+          390008, Vadodara <span class="edit-btn">Edit</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <input
+          type="text"
+          class="input-box"
+          placeholder="Name (as per PAN or Aadhar card)"
+        />
+      </div>
+
+      <div class="row">
+        <input
+          type="text"
+          class="input-box"
+          placeholder="Enter Mobile Number"
+        />
+        <span class="edit-btn">Edit</span>
+      </div>
+
+      <div class="row">
+        <p>Want to Apply for Two Wheeler Loan at Lowest Interest Rates?</p>
+        <div class="radio-group">
+          <label><input type="radio" name="loan" /> Yes</label>
+          <label><input type="radio" name="loan" /> No</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <p>When are you planning to purchase this bike?</p>
+
+        <div class="radio-group" style="flex-wrap: wrap">
+          <label><input type="radio" name="purchase" /> Within 7 Days</label>
+          <label><input type="radio" name="purchase" /> 7-15 Days</label>
+          <label><input type="radio" name="purchase" /> After 15 Days</label>
+          <label><input type="radio" name="purchase" /> After 30 Days</label>
+          <label><input type="radio" name="purchase" /> Not Decided</label>
+        </div>
+      </div>
+
+      <button class="btn-main" onclick="showForm2()">
+        View December Offers
+      </button>
+    </div>
+
+    <!-- ===================== FORM 2 ===================== -->
+    <div class="container" id="form2">
+      <div class="thank-title">Thank You</div>
+      <p>
+        Thanks for your interest in Royal Enfield GT 650<br />
+        Authorized Dealer will contact you soon with personalized offers.
+      </p>
+
+      <!-- Offer Blocks -->
+      <div class="offer-card">
+        <h3>30 days RSA for INR 299 → 99 only</h3>
+        <p>
+          This festive season, ride with peace of mind knowing that Allianz is
+          on your side.
+        </p>
+        <p>
+          Click the link <b>https://cd.cardk.in/hBS3o21</b> to buy RSA. T&Cs
+          apply.
+        </p>
+        <div class="valid">Valid till - Dec 14, 2025</div>
+      </div>
+
+      <div class="offer-card">
+        <h3>Flat 20% off on Studds Riding Helmets</h3>
+        <p>Use code <b>BDSTUDDS20</b> and get Flat 20% off.</p>
+        <p>Link: https://cd.cardk.in/CQR3o21</p>
+        <div class="valid">Valid till - Dec 14, 2025</div>
+      </div>
+
+      <div class="offer-card">
+        <h3>Flat 10% off on Axor Riding Helmets</h3>
+        <p>Use code <b>RIDE10</b> for flat 10% off.</p>
+        <p>Link: https://cd.cardk.in/BpR3o21</p>
+        <div class="valid">Valid till - Dec 31, 2025</div>
+      </div>
+
+      <div class="bike-section-title">Get offers on similar Bikes</div>
+
+      <!-- SAMPLE BIKE CARDS -->
+      <div class="bike-card">
+        <img src="/webui/images/tvs_ronin.avif" />
+        <div class="bike-info">
+          <strong>TVS Ronin</strong>
+          <div class="price">Rs 1,48,029*</div>
+          <button class="small-btn">View December Offers</button>
+        </div>
+      </div>
+
+      <div class="bike-card">
+        <img src="/webui/images/avenger_cruise.avif" />
+        <div class="bike-info">
+          <strong>Bajaj Avenger Cruise 220</strong>
+          <div class="price">Rs 1,54,801*</div>
+          <button class="small-btn">View December Offers</button>
+        </div>
+      </div>
+
+      <div class="bike-card">
+        <img src="/webui/images/mt15yamaha.avif" />
+        <div class="bike-info">
+          <strong>Yamaha MT 15 V2</strong>
+          <div class="price">Rs 1,76,831*</div>
+          <button class="small-btn">View December Offers</button>
+        </div>
+      </div>
+    </div>
+    <div id="footer"></div>
+
+    <script>
+      function showForm2() {
+        document.getElementById("form1").style.display = "none";
+        document.getElementById("form2").style.display = "block";
+      }
+    </script>
+     <script>
+      fetch("/webui/navbar.html")
+        .then((res) => res.text())
+        .then((data) => (document.getElementById("navbar").innerHTML = data));
+    </script>
+
+    <script>
+      fetch("/webui/footer.html")
+        .then((res) => res.text())
+        .then((data) => (document.getElementById("footer").innerHTML = data));
+    </script>
+  </body>
+</html>

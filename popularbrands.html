@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Popular Brands</title>
+  <style>
+    :root{
+      --brand-orange:#ef1010;--dark:#222;--muted:#6b6b6b;--bg:#f7f7f8;--card:#fff;--max-w:1100px;--radius:12px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:var(--dark)}
+    .topbar{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:40}
+    .container{max-width:var(--max-w);margin:0 auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:12px;align-items:center}
+    
+    .nav{display:flex;gap:10px}
+    .nav a{padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--muted);font-weight:600}
+    .nav a.active, .nav a:hover{background:rgba(255,106,0,0.09);color:var(--brand-orange)}
+
+    main{max-width:var(--max-w);margin:18px auto;padding:0 18px}
+    h2{margin:6px 0 14px}
+    .brand-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    @media (max-width:1100px){ .brand-grid{grid-template-columns:repeat(3,1fr)}}
+    @media (max-width:760px){ .brand-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:480px){ .brand-grid{grid-template-columns:1fr}}
+
+    .brand-card{background:var(--card);padding:18px;border-radius:12px;display:flex;align-items:center;gap:12px;box-shadow:0 8px 20px rgba(0,0,0,0.04)}
+    .brand-card img{width:72px;height:56px;object-fit:contain}
+    .brand-card h3{margin:0;font-size:16px}
+    .brand-meta{color:var(--muted);font-size:13px}
+    .search{display:flex;gap:8px;margin-bottom:18px}
+    .chip{padding:8px 10px;border-radius:10px;background:#fff;border:1px solid #eee;color:var(--muted);font-weight:600}
+  </style>
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <main>
+    <h2>Popular Brands</h2>
+    <div class="search">
+      <input placeholder="Search brands" style="flex:1;padding:10px;border-radius:10px;border:1px solid #eee" id="brandSearch"/>
+      <button class="chip" onclick="filterBrands()">Search</button>
+    </div>
+
+    <section class="brand-grid" id="brandGrid">
+      <!-- cards filled by JS -->
+    </section>
+
+  </main>
+  <div id="footer"></div>
+
+  <script>
+    const brands = [
+      {id:'honda',name:'Honda',logo:'/webui/images/honda.png',desc:'Reliable, popular commuter bikes'},
+      {id:'hero',name:'Hero',logo:'/webui/images/hero.png',desc:'Top selling mass-market bikes'},
+      {id:'yamaha',name:'Yamaha',logo:'/webui/images/yamaha.png',desc:'Sporty & performance models'},
+      {id:'ktm',name:'KTM',logo:'/webui/images/ktm.png',desc:'Performance & offroad oriented'},
+      {id:'royalenfield',name:'Royal Enfield',logo:'/webui/images/re.png',desc:'Cruisers and retro bikes'},
+      {id:'bajaj',name:'Bajaj',logo:'/webui/images/bajajbike.png',desc:'Affordable segment leaders'},
+      {id:'suzuki',name:'Suzuki',logo:'/webui/images/suzuki.png',desc:'Pan-Asian maker with variety'},
+      {id:'tvs',name:'tvs',logo:'/webui/images/tvs.png',desc:'Concept brand demo'}
+    ];
+
+    function renderBrands(list){
+      const grid = document.getElementById('brandGrid');
+      grid.innerHTML='';
+      list.forEach(b=>{
+        const el = document.createElement('article');
+        el.className='brand-card';
+        el.innerHTML = `
+          <img src="${b.logo}" alt="${b.name} logo">
+          <div>
+            <h3>${b.name}</h3>
+            <div class="brand-meta">${b.desc}</div>
+            <div style="margin-top:8px">
+              <a class="chip" style="text-decoration:none" href="newbikes.html">View models</a>
+            </div>
+          </div>
+        `;
+        grid.appendChild(el);
+      });
+    }
+
+    function filterBrands(){
+      const q = document.getElementById('brandSearch').value.toLowerCase().trim();
+      if(!q){ renderBrands(brands); return; }
+      renderBrands(brands.filter(b=>b.name.toLowerCase().includes(q)));
+    }
+
+    renderBrands(brands);
+  </script>
+  <script>
+      fetch("/webui/navbar.html")
+        .then((res) => res.text())
+        .then((data) => (document.getElementById("navbar").innerHTML = data));
+    </script>
+
+    <script>
+      fetch("/webui/footer.html")
+        .then((res) => res.text())
+        .then((data) => (document.getElementById("footer").innerHTML = data));
+    </script>
+</body>
+</html>

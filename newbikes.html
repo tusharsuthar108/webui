@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>New Bikes</title>
+    <style>
+      :root {
+        --brand-orange: #d22626;
+        --dark: #222;
+        --muted: #6b6b6b;
+        --bg: #f7f7f8;
+        --card-bg: #fff;
+        --max-w: 1200px;
+        --radius: 8px;
+        --gap: 16px;
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: var(--bg);
+        color: var(--dark);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Container */
+      .container {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: var(--card-bg);
+        border-bottom: 1px solid #e5e7eb;
+        padding: 20px 0;
+        margin: 0;
+      }
+      .hero-content {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 0 16px;
+        display: grid;
+        grid-template-columns: 1fr 280px;
+        gap: 20px;
+      }
+      .hero-left {
+        padding: 0;
+        margin: 0;
+      }
+      .hero h2 {
+        margin: 0 0 6px;
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--dark);
+      }
+      .hero-subtitle {
+        color: var(--muted);
+        margin: 0 0 16px;
+        font-size: 14px;
+      }
+
+      /* Filters */
+      .filters {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 16px;
+      }
+      .chip {
+        border: 1px solid #e5e7eb;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 13px;
+        color: var(--muted);
+        background: #fff;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-weight: 500;
+      }
+      .chip:hover,
+      .chip.active {
+        border-color: var(--brand-orange);
+        color: var(--brand-orange);
+        background: #fef2f2;
+      }
+
+      /* Search Box */
+      .search-box {
+        display: flex;
+        gap: 10px;
+      }
+      .search-input {
+        flex: 1;
+        padding: 11px 16px;
+        border-radius: 6px;
+        border: 1px solid #e5e7eb;
+        font-size: 14px;
+        outline: none;
+      }
+      .search-input:focus {
+        border-color: var(--brand-orange);
+      }
+      .btn {
+        background: var(--brand-orange);
+        color: #fff;
+        padding: 11px 24px;
+        border-radius: 6px;
+        border: none;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .btn:hover {
+        background: #b81f1f;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        display: none;
+      }
+      @media (min-width: 1024px) {
+        .sidebar {
+          display: block;
+        }
+      }
+      .sidebar-card {
+        background: #fef2f2;
+        border: 1px solid #fee2e2;
+        border-radius: var(--radius);
+        padding: 16px;
+        margin-bottom: 12px;
+      }
+      .sidebar-card h3 {
+        margin: 0 0 8px;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--dark);
+      }
+      .sidebar-card p {
+        color: var(--muted);
+        font-size: 13px;
+        margin: 0;
+      }
+      .offer-price {
+        font-weight: 800;
+        color: var(--brand-orange);
+        font-size: 18px;
+      }
+
+      /* Grid Section */
+      .grid-section {
+        background: var(--bg);
+        padding: 24px 0;
+      }
+      .section-header {
+        max-width: var(--max-w);
+        margin: 0 auto 16px;
+        padding: 0 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .section-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--dark);
+      }
+      .view-all {
+        color: var(--brand-orange);
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      /* Bike Grid */
+      .grid {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--gap);
+        padding: 0 16px;
+      }
+      @media (max-width: 1024px) {
+        .grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      @media (max-width: 768px) {
+        .grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .hero-content {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 480px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Card */
+      .card {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        transition: all 0.2s;
+        border: 1px solid #e5e7eb;
+      }
+      .card:hover {
+        box-shadow: 0 4px 12px rgb(176, 10, 10);
+        transform: translateY(-2px);
+      }
+      .card .media {
+        height: 160px;
+        background-size: cover;
+        background-position: center;
+        background-color: #f9fafb;
+      }
+      .card .body {
+        padding: 14px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .title {
+        font-weight: 700;
+        font-size: 15px;
+        margin: 0 0 6px;
+        color: var(--dark);
+      }
+      .specs {
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 8px;
+      }
+      .price-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: auto;
+        padding-top: 8px;
+      }
+      .price {
+        color: var(--brand-orange);
+        font-weight: 800;
+        font-size: 15px;
+      }
+      .card-actions {
+        display: flex;
+        gap: 6px;
+      }
+      .btn-small {
+        padding: 6px 12px;
+        font-size: 12px;
+        font-weight: 600;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .btn-view {
+        background: var(--brand-orange);
+        color: #fff;
+      }
+      .btn-view:hover {
+        background: #b81f1f;
+      }
+      .btn-compare {
+        background: #fff;
+        color: var(--muted);
+        border: 1px solid #e5e7eb;
+      }
+      .btn-compare:hover {
+        border-color: var(--brand-orange);
+        color: var(--brand-orange);
+      }
+
+      /* Load More */
+      .load-more-section {
+        max-width: var(--max-w);
+        margin: 24px auto;
+        padding: 0 16px;
+        text-align: center;
+      }
+      .btn-load {
+        background: #fff;
+        color: var(--brand-orange);
+        border: 2px solid var(--brand-orange);
+        padding: 12px 40px;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .btn-load:hover {
+        background: var(--brand-orange);
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar"></div>
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-content">
+          <div class="hero-left">
+            <h2>Explore New Bikes</h2>
+            <p class="hero-subtitle">
+              Compare specs, features and showroom prices
+            </p>
+
+            <div class="filters">
+              <div class="chip active">All Bikes</div>
+              <div class="chip">125cc</div>
+              <div class="chip">150cc</div>
+              <div class="chip">Commuter</div>
+              <div class="chip">Cruiser</div>
+              <div class="chip">Sports</div>
+            </div>
+
+            <div class="search-box">
+              <input
+                id="search"
+                class="search-input"
+                placeholder="Search by bike name..."
+                type="text"
+              />
+              <button class="btn" onclick="applySearch()">Search</button>
+            </div>
+          </div>
+
+          <aside class="sidebar">
+            <div class="sidebar-card">
+              <h3>Latest Offers</h3>
+              <p>EMI starts at</p>
+              <p class="offer-price">₹2,499<span style="font-size: 12px; font-weight: 400;">/month</span></p>
+            </div>
+
+            <div class="sidebar-card">
+              <h3>Top Reviews</h3>
+              <p>Average user rating</p>
+              <p class="offer-price">4.3<span style="font-size: 12px; font-weight: 400;">/5.0</span></p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Grid Section -->
+      <section class="grid-section">
+        <div class="section-header">
+          <h3 class="section-title">Popular Bikes</h3>
+          <a href="#" class="view-all">View All →</a>
+        </div>
+        
+        <div class="grid" id="bike-grid">
+          <!-- Bike cards populated by JS -->
+        </div>
+      </section>
+
+      <!-- Load More -->
+      <div class="load-more-section">
+        <button id="loadMore" class="btn-load">Load More Bikes</button>
+      </div>
+    </main>
+    <div id="footer"></div>
+
+    <script>
+      const bikes = [
+        {
+          id: 1,
+          name: "Avenger Cruise 220",
+          img: "/webui/images/avenger_cruise.avif",
+          specs: "150cc · 14PS · Disc",
+          price: "₹1.15 Lakh",
+        },
+        {
+          id: 2,
+          name: "Hunter 350",
+          img: "/webui/royal-enfield/images/re_hunter_londonred.avif",
+          specs: "110cc · 8.5PS · Drum",
+          price: "₹1,68,500",
+        },
+        {
+          id: 3,
+          name: "Classic 350",
+          img: "/webui/images/re_classic350.avif",
+          specs: "350cc · 20PS · ABS",
+          price: "₹2.05 Lakh",
+        },
+        {
+          id: 4,
+          name: "Bullet 350",
+          img: "/webui/images/re_bullet350.avif",
+          specs: "250cc · 30PS · ABS",
+          price: "₹1.85 Lakh",
+        },
+        {
+          id: 5,
+          name: "Ronin 125",
+          img: "/webui/images/tvs_ronin.avif",
+          specs: "125cc · 10PS · CBS",
+          price: "₹82,900",
+        },
+        {
+          id: 6,
+          name: "GT Continental 650",
+          img: "/webui/royal-enfield/images/re_gt_red.avif",
+          specs: "650cc · 47PS · Twin",
+          price: "₹3.25 Lakh",
+        },
+        {
+          id: 7,
+          name: "Splendor Plus",
+          img: "/webui/herobikes/images/hero_splendor_blackonly.avif",
+          specs: "100cc · 47PS · Twin",
+          price: "₹90,000 Lakh",
+        },
+        {
+          id: 8,
+          name: "Hunter 350",
+          img: "/webui/royal-enfield/images/re_hunter_riowhite.avif",
+          specs: "650cc · 47PS · Twin",
+          price: "₹3.25 Lakh",
+        },
+        {
+          id: 9,
+          name: "Vintage 650",
+          img: "/webui/royal-enfield/images/re_hunter_tokyoblack.avif",
+          specs: "650cc · 47PS · Twin",
+          price: "₹3.25 Lakh",
+          link: "royal-enfield.html",
+        },
+      ];
+
+      let showCount = 4;
+
+      function renderGrid() {
+        const grid = document.getElementById("bike-grid");
+        grid.innerHTML = "";
+        for (let i = 0; i < Math.min(showCount, bikes.length); i++) {
+          const b = bikes[i];
+          const card = document.createElement("article");
+          card.className = "card";
+          card.innerHTML = `
+            <div class="media" style="background-image:url('${b.img}')"></div>
+            <div class="body">
+              <h3 class="title">${b.name}</h3>
+              <div class="specs">${b.specs}</div>
+              <div class="price-row">
+                <div class="price">${b.price}</div>
+                <div class="card-actions">
+                  <button class="btn-small btn-view" onclick="view(${b.id})">View</button>
+                  <button class="btn-small btn-compare" onclick="compare(${b.id})">Compare</button>
+                </div>
+              </div>
+            </div>
+          `;
+          grid.appendChild(card);
+        }
+        document.getElementById("loadMore").style.display =
+          showCount >= bikes.length ? "none" : "inline-block";
+      }
+
+      function applySearch() {
+        const q = document.getElementById("search").value.toLowerCase().trim();
+        if (!q) {
+          showCount = 4;
+          renderGrid();
+          return;
+        }
+        const grid = document.getElementById("bike-grid");
+        grid.innerHTML = "";
+        bikes
+          .filter((b) => b.name.toLowerCase().includes(q))
+          .forEach((b) => {
+            const card = document.createElement("article");
+            card.className = "card";
+            card.innerHTML = `
+              <div class="media" style="background-image:url('${b.img}')"></div>
+              <div class="body">
+                <h3 class="title">${b.name}</h3>
+                <div class="specs">${b.specs}</div>
+                <div class="price-row">
+                  <div class="price">${b.price}</div>
+                  <div class="card-actions">
+                    <button class="btn-small btn-view" onclick="view(${b.id})">View</button>
+                    <button class="btn-small btn-compare" onclick="compare(${b.id})">Compare</button>
+                  </div>
+                </div>
+              </div>
+            `;
+            grid.appendChild(card);
+          });
+        document.getElementById("loadMore").style.display = "none";
+      }
+
+      function view(id) {
+        alert("Open bike detail: " + id);
+      }
+
+      function compare(id) {
+        alert("Add to compare: " + id);
+      }
+
+      document.getElementById("loadMore").addEventListener("click", () => {
+        showCount += 4;
+        renderGrid();
+      });
+
+      // Filter chip functionality
+      document.querySelectorAll('.chip').forEach(chip => {
+        chip.addEventListener('click', function() {
+          document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+
+      // Initial render
+      renderGrid();
+      
+    </script>
+    <script>
+      fetch("/webui/navbar.html")
+        .then((res) => res.text())
+        .then((data) => (document.getElementById("navbar").innerHTML = data));
+    </script>
+
+    <script>
+      fetch("/webui/footer.html")
+        .then((res) => res.text())
+        .then((data) => (document.getElementById("footer").innerHTML = data));
+    </script>
+  </body>
+</html>

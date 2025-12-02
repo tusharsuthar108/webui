@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2025 Yezdi Scrambler</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 30px;
+        background: #fafafa;
+        color: #222;
+      }
+
+      h2,
+      h3 {
+        margin: 0 0 10px;
+        font-weight: 600;
+      }
+
+      /* MAIN SECTION */
+      .bike-launch {
+        padding: 20px;
+        border-bottom: 1px solid #e5e5e5;
+        margin-bottom: 40px;
+      }
+
+      .bike-container {
+        display: flex;
+        gap: 25px;
+      }
+
+      /* IMAGE BOX */
+      .bike-image {
+        width: 30%;
+        position: relative;
+      }
+
+      .bike-image img {
+        width: 100%;
+        border-radius: 10px;
+      }
+
+      .img-count {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+      }
+
+      /* DETAILS */
+      .bike-details {
+        width: 55%;
+      }
+
+      .bike-title {
+        font-size: 26px;
+        font-weight: 700;
+      }
+
+      .share-btn {
+        background: none;
+        border: 1px solid #e00;
+        color: #e00;
+        padding: 6px 14px;
+        border-radius: 5px;
+        font-size: 14px;
+        margin-top: 8px;
+        cursor: pointer;
+      }
+
+      .bike-highlights {
+        padding-left: 18px;
+        margin-top: 12px;
+        line-height: 1.5;
+      }
+
+      .price-block strong {
+        font-size: 24px;
+        color: #000;
+      }
+
+      .launch-date {
+        margin-top: 5px;
+        font-size: 15px;
+      }
+
+      .alert-btn {
+        margin-top: 10px;
+        background: #ff4b4b;
+        color: #fff;
+        border: none;
+        padding: 10px 22px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 15px;
+      }
+
+      /* SPECS BLOCK */
+      .specs-box {
+        margin-top: 30px;
+        padding: 20px;
+        background: #fff;
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+      }
+
+      .spec-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .spec-row:last-child {
+        border-bottom: none;
+      }
+
+      .spec-title {
+        font-weight: 600;
+      }
+
+      .petrol-icon {
+        width: 20px;
+        vertical-align: middle;
+        margin-right: 6px;
+      }
+
+      /* FULL SPECIFICATION TABLE */
+      .spec-table {
+        margin-top: 20px;
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 15px;
+      }
+
+      .spec-table th {
+        background: #efefef;
+        padding: 10px;
+        text-align: left;
+        font-weight: 600;
+      }
+
+      .spec-table td {
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+      }
+
+      /* PRICE TABLE */
+      .price-table {
+        margin-top: 30px;
+        padding: 20px;
+        background: #fff;
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+      }
+
+      .price-table table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+      }
+
+      .price-table th,
+      .price-table td {
+        padding: 12px;
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      .price-table th {
+        background: #efefef;
+        text-align: left;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="navbar"></div>
+    <!-- ========== BIKE SECTION ========== -->
+    <section id="yezdiscrambler" class="bike-launch">
+      <div class="bike-container">
+        <!-- LEFT IMAGE -->
+        <div class="bike-image">
+          <img
+            src="/webui/upcoming/images/yezdi scrambler.avif"
+            alt="Bike Image"
+          />
+          <span class="img-count">1 Image</span>
+        </div>
+
+        <!-- RIGHT DETAILS -->
+        <div class="bike-details">
+          <h2 class="bike-title">2025 Yezdi Scrambler</h2>
+          <button class="share-btn">Share Your Views</button>
+
+          <ul class="bike-highlights">
+            <li>
+              2025 Yezdi Scrambler will likely come with several design changes.
+            </li>
+            <li>Alloy wheels with tubeless tyres & short stubby exhaust.</li>
+            <li>Updated design: longer rear fender & race-style panels.</li>
+            <li>May retain the 334cc engine.</li>
+          </ul>
+
+          <div class="price-block">
+            <strong>₹2,15,000</strong> Estimated Price in India
+          </div>
+
+          <p class="launch-date">
+            <strong>Expected Launch Date – Nov 2025</strong>
+          </p>
+
+          <button class="alert-btn">Alert Me When Launched</button>
+        </div>
+      </div>
+
+      <!-- ========== SPECS SECTION ========== -->
+      <div class="specs-box">
+        <h3>Key Specs & Features of 2025 Yezdi Scrambler</h3>
+
+        <div class="spec-row">
+          <span class="spec-title">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/3103/3103446.png"
+              class="petrol-icon"
+            />
+            Fuel Type
+          </span>
+          <span class="spec-value">Petrol</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-title">Transmission</span>
+          <span class="spec-value">Manual</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-title">Body Type</span>
+          <span class="spec-value">Scrambler Bike</span>
+        </div>
+
+        <!-- FULL SPECS TABLE -->
+        <h3 style="margin-top: 25px">2025 Yezdi Scrambler Specifications</h3>
+
+        <table class="spec-table">
+          <tr>
+            <th colspan="2">Engine & Transmission</th>
+          </tr>
+          <tr>
+            <td>Fuel Supply</td>
+            <td>Fuel Injection</td>
+          </tr>
+          <tr>
+            <td>Emission Type</td>
+            <td>BS6 - 2.0</td>
+          </tr>
+
+          <tr>
+            <th colspan="2">Chassis & Suspension</th>
+          </tr>
+          <tr>
+            <td>Body Type</td>
+            <td>Scrambler</td>
+          </tr>
+
+          <tr>
+            <th colspan="2">Motor & Battery</th>
+          </tr>
+          <tr>
+            <td>Transmission</td>
+            <td>Manual</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- ========== PRICE TABLE ========== -->
+      <div class="price-table">
+        <h3>2025 Yezdi Scrambler Price</h3>
+        <p>The following details are indicative and subject to change.</p>
+
+        <table>
+          <tr>
+            <th>Variant</th>
+            <th>Estimated Price</th>
+          </tr>
+
+          <tr>
+            <td>2025 Scrambler STD</td>
+            <td>₹2,15,000</td>
+          </tr>
+        </table>
+
+        <button class="alert-btn">Alert Me When Launched</button>
+      </div>
+    </section>
+
+    <section id="suzukiaccess" class="bike-launch">
+      <div class="bike-container">
+        <!-- LEFT IMAGE -->
+        <div class="bike-image">
+          <img
+            src="/webui/upcoming/images/suzuki access.avif"
+            alt="Bike Image"
+          />
+          <span class="img-count">1 Image</span>
+        </div>
+
+        <!-- RIGHT DETAILS -->
+        <div class="bike-details">
+          <h2 class="bike-title">Suzuki e Access</h2>
+          <button class="share-btn">Share Your Views</button>
+
+          <ul class="bike-highlights">
+            <li>
+              The Suzuki e-Access is the first-ever electric scooter by the
+              Japanese manufacturer in India.
+            </li>
+            <li>Alloy wheels with tubeless tyres & short stubby exhaust.</li>
+            <li>Likely to be launched in June 2025.</li>
+            <li>May retain the 125cc engine.</li>
+          </ul>
+
+          <div class="price-block">
+            <strong>₹2,15,000</strong> Estimated Price in India
+          </div>
+
+          <p class="launch-date">
+            <strong>Expected Launch Date – Nov 2025</strong>
+          </p>
+
+          <button class="alert-btn">Alert Me When Launched</button>
+        </div>
+      </div>
+
+      <!-- ========== SPECS SECTION ========== -->
+      <div class="specs-box">
+        <h3>Key Specs & Features of Suzuki e Access</h3>
+
+        <div class="spec-row">
+          <span class="spec-title">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/3103/3103446.png"
+              class="petrol-icon"
+            />
+            Fuel Type
+          </span>
+          <span class="spec-value">Petrol</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-title">Transmission</span>
+          <span class="spec-value">Manual</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-title">Body Type</span>
+          <span class="spec-value">Suzuki Bike</span>
+        </div>
+
+        <!-- FULL SPECS TABLE -->
+        <h3 style="margin-top: 25px">Suzuki e Access Specifications</h3>
+
+        <table class="spec-table">
+          <tr>
+            <th colspan="2">Engine & Transmission</th>
+          </tr>
+          <tr>
+            <td>Fuel Supply</td>
+            <td>Fuel Injection</td>
+          </tr>
+          <tr>
+            <td>Emission Type</td>
+            <td>BS6 - 2.0</td>
+          </tr>
+
+          <tr>
+            <th colspan="2">Chassis & Suspension</th>
+          </tr>
+          <tr>
+            <td>Body Type</td>
+            <td>Access</td>
+          </tr>
+
+          <tr>
+            <th colspan="2">Motor & Battery</th>
+          </tr>
+          <tr>
+            <td>Transmission</td>
+            <td>Manual</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- ========== PRICE TABLE ========== -->
+      <div class="price-table">
+        <h3>Suzuki e Access Price</h3>
+        <p>The following details are indicative and subject to change.</p>
+
+        <table>
+          <tr>
+            <th>Variant</th>
+            <th>Estimated Price</th>
+          </tr>
+
+          <tr>
+            <td>2025 Access STD</td>
+            <td>₹1,00,000</td>
+          </tr>
+        </table>
+
+        <button class="alert-btn">Alert Me When Launched</button>
+      </div>
+    </section>
+
+    <section id="oben" class="bike-launch">
+      <div class="bike-container">
+        <!-- LEFT IMAGE -->
+        <div class="bike-image">
+          <img src="/webui/upcoming/images/oben o100.avif" alt="Bike Image" />
+          <span class="img-count">1 Image</span>
+        </div>
+
+        <!-- RIGHT DETAILS -->
+        <div class="bike-details">
+          <h2 class="bike-title">Oben O100</h2>
+          <button class="share-btn">Share Your Views</button>
+
+          <ul class="bike-highlights">
+            <li>
+              Oben O100 is the brand's platform for its upcoming electric bikes
+              in India.
+            </li>
+            <li>
+              It will be an affordable electric motorcycle to rival 100cc
+              petrol-powered bikes.
+            </li>
+            <li>Likely to be launched in June 2025.</li>
+            <li>May retain the 150cc engine.</li>
+          </ul>
+
+          <div class="price-block">
+            <strong>₹2,15,000</strong> Estimated Price in India
+          </div>
+
+          <p class="launch-date">
+            <strong>Expected Launch Date – Nov 2025</strong>
+          </p>
+
+          <button class="alert-btn">Alert Me When Launched</button>
+        </div>
+      </div>
+
+      <!-- ========== SPECS SECTION ========== -->
+      <div class="specs-box">
+        <h3>Key Specs & Features of Oben O100</h3>
+
+        <div class="spec-row">
+          <span class="spec-title">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/3103/3103446.png"
+              class="petrol-icon"
+            />
+            Fuel Type
+          </span>
+          <span class="spec-value">electric</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-title">Transmission</span>
+          <span class="spec-value">Manual</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-title">Body Type</span>
+          <span class="spec-value">Oben Bike</span>
+        </div>
+
+        <!-- FULL SPECS TABLE -->
+        <h3 style="margin-top: 25px">Oben O100 Specifications</h3>
+
+        <table class="spec-table">
+          <tr>
+            <th colspan="2">Engine & Transmission</th>
+          </tr>
+          <tr>
+            <td>electric Supply</td>
+            <td>electric Injection</td>
+          </tr>
+          <tr>
+            <td>Emission Type</td>
+            <td>BS6 - 2.0</td>
+          </tr>
+
+          <tr>
+            <th colspan="2">Chassis & Suspension</th>
+          </tr>
+          <tr>
+            <td>Body Type</td>
+            <td>Oben O100</td>
+          </tr>
+
+          <tr>
+            <th colspan="2">Motor & Battery</th>
+          </tr>
+          <tr>
+            <td>Transmission</td>
+            <td>Manual</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- ========== PRICE TABLE ========== -->
+      <div class="price-table">
+        <h3>Oben O100 Price</h3>
+        <p>The following details are indicative and subject to change.</p>
+
+        <table>
+          <tr>
+            <th>Variant</th>
+            <th>Estimated Price</th>
+          </tr>
+
+          <tr>
+            <td>2025 Oben O100 STD</td>
+            <td>₹1,00,000</td>
+          </tr>
+        </table>
+
+        <button class="alert-btn">Alert Me When Launched</button>
+      </div>
+    </section>
+
+    <div id="footer"></div>
+    <script>
+      // Load Navbar
+      fetch("/webui/navbar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        });
+
+      // Load Footer
+      fetch("/webui/footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+  </body>
+</html>

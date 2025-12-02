@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bike Finance Offers</title>
+    <style>
+      /* Reset & Base */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Arial", sans-serif;
+      }
+      body {
+        background-color: #f5f5f5;
+        color: #333;
+        line-height: 1.4;
+        padding: 20px;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* Container */
+      .container {
+        max-width: 1100px;
+        margin: 10px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+      }
+      h2 {
+        font-size: 22px;
+        margin-bottom: 16px;
+        font-weight: 600;
+      }
+
+      /* Bike Finance Offers Table */
+      .finance-offers {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+      }
+      .finance-offers th,
+      .finance-offers td {
+        padding: 14px 12px;
+        border: 1px solid #e0e0e0;
+        text-align: left;
+        font-size: 14px;
+      }
+      .finance-offers th {
+        background-color: #f8f8f8;
+        font-weight: 600;
+      }
+      .finance-offers td button {
+        background-color: #e60000;
+        color: #fff;
+        padding: 6px 14px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 13px;
+      }
+      .finance-offers td button:hover {
+        background-color: #cc0000;
+      }
+
+      /* Why BikeDekho Finance */
+      .why-finance {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+      }
+      .why-finance .card {
+        background: #fdfdfd;
+        flex: 1 1 23%;
+        margin: 10px 0;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 13px;
+      }
+      .why-finance .card img {
+        width: 40px;
+        margin-bottom: 10px;
+      }
+
+      /* Steps Section */
+      .steps {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 30px;
+      }
+      .step {
+        background: #f9f9f9;
+        flex: 1 1 48%;
+        margin-bottom: 15px;
+        padding: 15px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .step img {
+        width: 60px;
+        height: 60px;
+      }
+      .step .text {
+        font-size: 13px;
+      }
+      .step .text strong {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      /* Finance Partners */
+      .partners {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .partner-card {
+        background: #fff;
+        flex: 1 1 23%;
+        margin: 10px 0;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #e0e0e0;
+        text-align: center;
+        font-size: 13px;
+      }
+      .partner-card img {
+        width: 100px;
+        margin-bottom: 10px;
+      }
+      .partner-card a {
+        color: #0073e6;
+        display: block;
+        margin-top: 5px;
+        font-size: 12px;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .why-finance .card,
+        .step,
+        .partner-card {
+          flex: 1 1 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar"></div>
+
+    <div class="container">
+      <h2>Bike Finance Offers</h2>
+      <table class="finance-offers">
+        <tr>
+          <th>Lender</th>
+          <th>Interest Rate</th>
+          <th>Processing Fee</th>
+          <th>Loan Amount</th>
+          <th>Tenure</th>
+          <th>Action</th>
+        </tr>
+        <tr>
+          <td>Bajaj Credit</td>
+          <td>7.9% onwards</td>
+          <td>1%</td>
+          <td>Upto 95% of bike price</td>
+          <td>6 months - 5 years</td>
+          <td><button>Apply Now</button></td>
+        </tr>
+        <tr>
+          <td>HDFC Bank</td>
+          <td>17.99% (Reducing)</td>
+          <td>Nil</td>
+          <td>Upto 90% of bike price</td>
+          <td>6 months - 5 years</td>
+          <td><button>Apply Now</button></td>
+        </tr>
+      </table>
+
+      <h2>Why BikeDekho Finance?</h2>
+      <div class="why-finance">
+        <div class="card">
+          <img src="https://img.icons8.com/ios/50/000000/approval.png" />
+          <strong>Instant approval</strong>
+          Online loan process, over 80% reduction in loan processing time vs
+          offline process
+        </div>
+        <div class="card">
+          <img src="https://img.icons8.com/ios/50/000000/multiple-choice.png" />
+          <strong>Multiple offers</strong>
+          Marketplace of bike finance products, loan offers from over 5+ lenders
+        </div>
+        <div class="card">
+          <img src="https://img.icons8.com/ios/50/000000/document.png" />
+          <strong>Paperless process</strong>
+          Upload required documents on our platform for online verification
+        </div>
+        <div class="card">
+          <img src="https://img.icons8.com/ios/50/000000/visible.png" />
+          <strong>Complete transparency</strong>
+          All terms & conditions are shown upfront, keeping you informed on each
+          step of the process
+        </div>
+      </div>
+
+      <h2>Bike Finance Offer in 4 Steps</h2>
+      <div class="steps">
+        <div class="step">
+          <img src="https://img.icons8.com/ios/50/000000/1-circle.png" />
+          <div class="text">
+            <strong>1. Check your eligibility</strong>
+            Provide your details <br />
+            Submit finance form
+          </div>
+        </div>
+        <div class="step">
+          <img src="https://img.icons8.com/ios/50/000000/2-circle.png" />
+          <div class="text">
+            <strong>2. Select best offer</strong>
+            Choose from multiple offers <br />
+            Customize your selected offer
+          </div>
+        </div>
+        <div class="step">
+          <img src="https://img.icons8.com/ios/50/000000/3-circle.png" />
+          <div class="text">
+            <strong>3. Provide remaining details</strong>
+            Upload required documents <br />
+            Submit application
+          </div>
+        </div>
+        <div class="step">
+          <img src="https://img.icons8.com/ios/50/000000/4-circle.png" />
+          <div class="text">
+            <strong>4. Instant approval</strong>
+            Application approved <br />
+            Loan disbursal process initiated
+          </div>
+        </div>
+      </div>
+
+      <h2>Our Finance Partners</h2>
+      <div class="partners">
+        <div class="partner-card">
+          <img src="/webui/images/bajaj.png" />
+          <a href="#">Contact Us</a>
+          <a href="#">Customer Support</a>
+        </div>
+        <div class="partner-card">
+          <img src="/webui/images/hdb.png" />
+          <a href="#">Contact Us</a>
+          <a href="#">Customer Feedback Form</a>
+        </div>
+        <div class="partner-card">
+          <img src="/webui/images/idfcbank.png" />
+          <a href="#">Contact Us</a>
+          <a href="#">Customer Support</a>
+        </div>
+        <div class="partner-card">
+          <img src="/webui/images/moneyview.png" />
+          <a href="#">Contact Us</a>
+          <a href="#">Customer Support</a>
+        </div>
+      </div>
+    </div>
+    <div id="footer"></div>
+  </body>
+   <script>
+      fetch("/webui/navbar.html")
+        .then((res) => res.text())
+        .then((data) => (document.getElementById("navbar").innerHTML = data));
+    </script>
+
+    <script>
+      fetch("/webui/footer.html")
+        .then((res) => res.text())
+        .then((data) => (document.getElementById("footer").innerHTML = data));
+    </script>
+</html>
