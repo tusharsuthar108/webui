@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BikeDekho - Login/Register</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #f8f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Demo button to trigger modal */
+    .demo-btn {
+      padding: 15px 40px;
+      background: #d30000;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .demo-btn:hover {
+      background: #b30000;
+    }
+
+    /* ---------- LOGIN/REGISTER MODAL ---------- */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 999;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-container {
+      background: #fff;
+      width: 450px;
+      max-width: 90%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      animation: slideUp 0.3s ease;
+      position: relative;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #999;
+      cursor: pointer;
+      z-index: 10;
+      transition: color 0.3s;
+    }
+
+    .modal-close:hover {
+      color: #d30000;
+    }
+
+    .modal-tabs {
+      display: flex;
+      background: #f8f9fa;
+      border-bottom: 2px solid #e5e5e5;
+    }
+
+    .modal-tab {
+      flex: 1;
+      padding: 18px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 600;
+      color: #666;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s;
+    }
+
+    .modal-tab.active {
+      color: #d30000;
+      border-bottom-color: #d30000;
+      background: #fff;
+    }
+
+    .modal-content {
+      padding: 35px 40px;
+    }
+
+    .form-section {
+      display: none;
+    }
+
+    .form-section.active {
+      display: block;
+    }
+
+    .form-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #222;
+    }
+
+    .form-subtitle {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: #444;
+      margin-bottom: 6px;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-wrapper i {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+      font-size: 14px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 14px 12px 40px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+      outline: none;
+      transition: all 0.3s;
+    }
+
+    .input-group input:focus {
+      border-color: #d30000;
+      box-shadow: 0 0 0 3px rgba(211, 0, 0, 0.1);
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 13px;
+      background: #d30000;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 10px;
+    }
+
+    .submit-btn:hover {
+      background: #b30000;
+    }
+
+    .divider {
+      text-align: center;
+      margin: 22px 0;
+      position: relative;
+      color: #999;
+      font-size: 13px;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 42%;
+      height: 1px;
+      background: #ddd;
+    }
+
+    .divider::before {
+      left: 0;
+    }
+
+    .divider::after {
+      right: 0;
+    }
+
+    .social-login {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .social-btn {
+      flex: 1;
+      padding: 11px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background: #fff;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s;
+    }
+
+    .social-btn:hover {
+      background: #f8f9fa;
+      border-color: #bbb;
+    }
+
+    .social-btn i {
+      font-size: 16px;
+    }
+
+    .google { color: #db4437; }
+    .facebook { color: #4267B2; }
+
+    .form-footer {
+      text-align: center;
+      font-size: 13px;
+      color: #666;
+      margin-top: 18px;
+    }
+
+    .form-footer a {
+      color: #d30000;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .form-footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Success message */
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .success-message.active {
+      display: block;
+    }
+
+    .success-icon {
+      font-size: 60px;
+      color: #28a745;
+      margin-bottom: 20px;
+    }
+
+    .success-message h3 {
+      font-size: 22px;
+      color: #222;
+      margin-bottom: 10px;
+    }
+
+    .success-message p {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+  </style>
+  </head>
+
+  <body>
+    <!-- ---------- LOGIN/REGISTER MODAL ---------- -->
+    <div class="modal-overlay active" id="authModal">
+      <!-- Force active -->
+      <div class="modal-container">
+        <button class="modal-close" onclick="closeModal()">×</button>
+
+        <div class="modal-tabs">
+          <div class="modal-tab active" onclick="switchTab('login')">Login</div>
+          <div class="modal-tab" onclick="switchTab('register')">Register</div>
+        </div>
+
+        <div class="modal-content">
+          <!-- LOGIN FORM -->
+          <div class="form-section active" id="loginForm">
+            <h2 class="form-title">Welcome Back!</h2>
+            <p class="form-subtitle">Login to access your account</p>
+
+            <div class="input-group">
+              <label>Email or Mobile Number</label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-envelope"></i>
+                <input
+                  type="text"
+                  id="loginEmail"
+                  placeholder="Enter email or mobile"
+                />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>Password</label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-lock"></i>
+                <input
+                  type="password"
+                  id="loginPassword"
+                  placeholder="Enter password"
+                />
+              </div>
+            </div>
+
+            <div class="checkbox-group">
+              <input type="checkbox" id="rememberMe" />
+              <label for="rememberMe">Remember me</label>
+            </div>
+
+            <button class="submit-btn" onclick="handleLogin()">Login</button>
+
+            <div class="divider">OR</div>
+
+            <div class="social-login">
+              <button class="social-btn" onclick="socialLogin('google')">
+                <i class="fa-brands fa-google google"></i> Google
+              </button>
+              <button class="social-btn" onclick="socialLogin('facebook')">
+                <i class="fa-brands fa-facebook facebook"></i> Facebook
+              </button>
+            </div>
+
+            <div class="form-footer">
+              Don't have an account?
+              <a href="#" onclick="switchTab('register')">Register now</a>
+            </div>
+          </div>
+
+          <!-- REGISTER FORM -->
+          <div class="form-section" id="registerForm">
+            <h2 class="form-title">Create Account</h2>
+            <p class="form-subtitle">Join BikeDekho community today</p>
+
+            <div class="input-group">
+              <label>Full Name</label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-user"></i>
+                <input
+                  type="text"
+                  id="registerName"
+                  placeholder="Enter your full name"
+                />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>Email Address</label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-envelope"></i>
+                <input
+                  type="email"
+                  id="registerEmail"
+                  placeholder="Enter your email"
+                />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>Mobile Number</label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-phone"></i>
+                <input
+                  type="tel"
+                  id="registerMobile"
+                  placeholder="Enter 10-digit mobile number"
+                />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>Password</label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-lock"></i>
+                <input
+                  type="password"
+                  id="registerPassword"
+                  placeholder="Create a strong password"
+                />
+              </div>
+            </div>
+
+            <div class="checkbox-group">
+              <input type="checkbox" id="agreeTerms" />
+              <label for="agreeTerms">I agree to Terms & Conditions</label>
+            </div>
+
+            <button class="submit-btn" onclick="handleRegister()">
+              Create Account
+            </button>
+
+            <div class="divider">OR</div>
+
+            <div class="social-login">
+              <button class="social-btn" onclick="socialLogin('google')">
+                <i class="fa-brands fa-google google"></i> Google
+              </button>
+              <button class="social-btn" onclick="socialLogin('facebook')">
+                <i class="fa-brands fa-facebook facebook"></i> Facebook
+              </button>
+            </div>
+
+            <div class="form-footer">
+              Already have an account?
+              <a href="#" onclick="switchTab('login')">Login now</a>
+            </div>
+          </div>
+
+          <!-- SUCCESS MESSAGE -->
+          <div class="success-message" id="successMessage">
+            <div class="success-icon">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3>Welcome to BikeDekho!</h3>
+            <p id="successText">You have successfully logged in.</p>
+            <button class="submit-btn" onclick="closeModal()">
+              Continue Browsing
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+  // ✔ Auto open modal on page load
+  window.onload = function () {
+    openModal();
+  };
+
+  function openModal() {
+    document.getElementById("authModal").classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal() {
+    document.getElementById("authModal").classList.remove("active");
+    document.body.style.overflow = "auto";
+  }
+
+  // ---------------------------------------------------------
+  //                TAB SWITCH FUNCTION
+  // ---------------------------------------------------------
+  function switchTab(tab) {
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
+    const successMessage = document.getElementById("successMessage");
+
+    const tabs = document.querySelectorAll(".modal-tab");
+
+    // Reset all
+    tabs.forEach((t) => t.classList.remove("active"));
+    loginForm.classList.remove("active");
+    registerForm.classList.remove("active");
+    successMessage.classList.remove("active");
+
+    // Activate selected
+    if (tab === "login") {
+      loginForm.classList.add("active");
+      tabs[0].classList.add("active");
+    } else {
+      registerForm.classList.add("active");
+      tabs[1].classList.add("active");
+    }
+  }
+
+  // ---------------------------------------------------------
+  //                LOGIN HANDLER
+  // ---------------------------------------------------------
+  function handleLogin() {
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+
+    if (email.trim() === "" || password.trim() === "") {
+      alert("Please enter both email/mobile and password.");
+      return;
+    }
+
+    showSuccess("You have successfully logged in.");
+  }
+
+  // ---------------------------------------------------------
+  //                REGISTER HANDLER
+  // ---------------------------------------------------------
+  function handleRegister() {
+    const name = document.getElementById("registerName").value;
+    const email = document.getElementById("registerEmail").value;
+    const mobile = document.getElementById("registerMobile").value;
+    const password = document.getElementById("registerPassword").value;
+    const agree = document.getElementById("agreeTerms").checked;
+
+    if (!name || !email || !mobile || !password) {
+      alert("Please fill all the fields.");
+      return;
+    }
+
+    if (!agree) {
+      alert("You must agree to Terms & Conditions");
+      return;
+    }
+
+    showSuccess("Your account has been created successfully.");
+  }
+
+  // ---------------------------------------------------------
+  //                SOCIAL LOGIN
+  // ---------------------------------------------------------
+  function socialLogin(type) {
+    showSuccess("Logged in using " + type.toUpperCase());
+  }
+
+  // ---------------------------------------------------------
+  //                SUCCESS MESSAGE
+  // ---------------------------------------------------------
+  function showSuccess(message) {
+    document.getElementById("loginForm").classList.remove("active");
+    document.getElementById("registerForm").classList.remove("active");
+
+    const successBox = document.getElementById("successMessage");
+    document.getElementById("successText").innerText = message;
+
+    successBox.classList.add("active");
+  }
+</script>
+
+  </body>
+</html>

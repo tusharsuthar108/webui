@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Topbar</title>
+
+    <!-- Bootstrap & FontAwesome -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      /* ===================== TOPBAR ===================== */
+      .topbar {
+        background: #fff;
+        padding: 12px 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+      }
+
+      /* Search input */
+      .topbar input.form-control {
+        width: 25%;
+        min-width: 150px;
+      }
+
+      /* Dropdown */
+      .topbar .dropdown {
+        position: relative;
+      }
+
+      .topbar .dropdown img {
+        width: 40px;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+
+      .topbar .dropdown strong {
+        font-size: 14px;
+      }
+
+      .topbar .dropdown-menu {
+        min-width: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ===================== TOPBAR ===================== -->
+    <div class="topbar">
+      <input type="text" class="form-control" placeholder="Search..." />
+      <div class="dropdown">
+        <div
+          class="d-flex align-items-center"
+          data-bs-toggle="dropdown"
+          style="cursor: pointer"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+            alt="Admin Avatar"
+          />
+          <strong>Admin</strong>
+        </div>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li><a class="dropdown-item" href="settings.html">Settings</a></li>
+          <li>
+            <a class="dropdown-item" href="#" id="dropdownLogout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // LOGOUT FUNCTION
+      function logoutAdmin() {
+        sessionStorage.removeItem("adminLoggedIn");
+        window.location.href = "login.html";
+      }
+
+      // Attach logout to dropdown button
+      const dropdownLogout = document.getElementById("dropdownLogout");
+      if (dropdownLogout) dropdownLogout.addEventListener("click", logoutAdmin);
+    </script>
+  </body>
+</html>

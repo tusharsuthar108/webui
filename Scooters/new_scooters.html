@@ -1,152 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>New Scooters</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>New Scooters</title>
 
-<style>
-  :root {
-    --brand-red: #d10000;
-    --bg: #f7f7f8;
-    --card: #ffffff;
-    --muted: #6b6b6b;
-    --max-w: 1100px;
-  }
+    <style>
+      :root {
+        --brand-red: #d10000;
+        --bg: #f7f7f8;
+        --card: #ffffff;
+        --muted: #6b6b6b;
+        --max-w: 1100px;
+      }
 
-  body {
-    margin: 0;
-    font-family: Inter, system-ui, Arial;
-    background: white;
-    color: #111;
-  }
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, Arial;
+        background: white;
+        color: #111;
+      }
 
-  .page {
-    max-width: var(--max-w);
-    margin: 20px auto;
-    padding: 0 16px;
-  }
+      .page {
+        max-width: var(--max-w);
+        margin: 20px auto;
+        padding: 0 16px;
+      }
 
-  h2 {
-    margin: 10px 4px 20px;
-    font-size: 22px;
-  }
+      h2 {
+        margin: 10px 4px 20px;
+        font-size: 22px;
+      }
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-  }
-  @media (max-width: 900px) {
-    .grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 600px) {
-    .grid { grid-template-columns: 1fr; }
-  }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      @media (max-width: 900px) {
+        .grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 600px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
 
-  .card {
-    background: var(--card);
-    border-radius: 12px;
-    padding: 12px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-  }
+      .card {
+        background: var(--card);
+        border-radius: 12px;
+        padding: 12px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      }
 
-  .card img {
-    width: 100%;
-    height: 250px;
-    border-radius: 10px;
-    object-fit: cover;
-  }
+      .card img {
+        width: 100%;
+        height: 250px;
+        border-radius: 10px;
+        object-fit: cover;
+      }
 
-  .title {
-    font-size: 17px;
-    margin: 10px 0 6px;
-    font-weight: 700;
-  }
-  .specs {
-    color: var(--muted);
-    font-size: 13px;
-    margin-bottom: 6px;
-  }
-  .price {
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 12px;
-  }
+      .title {
+        font-size: 17px;
+        margin: 10px 0 6px;
+        font-weight: 700;
+      }
+      .specs {
+        color: var(--muted);
+        font-size: 13px;
+        margin-bottom: 6px;
+      }
+      .price {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
 
-  .btn-row {
-    display: flex;
-    gap: 8px;
-  }
-  .btn {
-    flex: 1;
-    padding: 8px 12px;
-    text-align: center;
-    font-size: 14px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    background: white;
-    cursor: pointer;
-    transition: 0.25s ease;
-    text-decoration: none;
-    color: #111;
-  }
-  .btn:hover {
-    background: var(--brand-red);
-    color: white;
-    border-color: var(--brand-red);
-    box-shadow: 0 4px 12px rgba(209,0,0,0.28);
-  }
-</style>
-</head>
-<body>
-  <div id="navbar"></div>
+      .btn-row {
+        display: flex;
+        gap: 8px;
+      }
+      .btn {
+        flex: 1;
+        padding: 8px 12px;
+        text-align: center;
+        font-size: 14px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        background: white;
+        cursor: pointer;
+        transition: 0.25s ease;
+        text-decoration: none;
+        color: #111;
+      }
+      .btn:hover {
+        background: var(--brand-red);
+        color: white;
+        border-color: var(--brand-red);
+        box-shadow: 0 4px 12px rgba(209, 0, 0, 0.28);
+      }
+      .card-link {
+        text-decoration: none;
+        color: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar"></div>
 
-<div class="page">
-  <h2>New Scooters</h2>
-  <div class="grid" id="grid"></div>
-</div>
-<div id="footer"></div>
+    <div class="page">
+      <h2>New Scooters</h2>
+      <div class="grid" id="grid"></div>
+    </div>
+    <div id="footer"></div>
 
-<script>
-const scooters = [
-  {name:"Honda Activa 6G", img:"/webui/scooters/images/activa6g.avif", specs:"109cc · 7.7PS · FI Engine", price:"₹76,234"},
-  {name:"TVS Ntorq 125", img:"/webui/scooters/images/ntorq125.avif", specs:"125cc · 9.3PS · 50kmpl", price:"₹90,641"},
-  {name:"Suzuki Access 125", img:"/webui/scooters/images/access125.avif", specs:"125cc · 8.7PS · BS6", price:"₹85,200"},
-  {name:"Hero Destini 125", img:"/webui/scooters/images/destini125.avif", specs:"125cc · 9PS · 55kmpl", price:"₹82,190"},
-  {name:"Yamaha Fascino 125", img:"/webui/scooters/images/fascino125.avif", specs:"125cc · Hybrid", price:"₹80,500"},
-  {name:"TVS Jupiter", img:"/webui/scooters/images/jupiter.avif", specs:"110cc · 50kmpl", price:"₹76,738"}
-];
+    <script>
+      const scooters = [
+        {
+          name: "Honda Activa 6G",
+          img: "/webui/scooters/images/activa6g.avif",
+          specs: "109cc · 7.7PS · FI Engine",
+          price: "₹76,234",
+          link: "honda_activa.html",
+          onroadlink: "honda_activaemi.html",
+        },
+        {
+          name: "TVS Ntorq 125",
+          img: "/webui/scooters/images/ntorq125.avif",
+          specs: "125cc · 9.3PS · 50kmpl",
+          price: "₹90,641",
+        },
+        {
+          name: "Suzuki Access 125",
+          img: "/webui/scooters/images/access125.avif",
+          specs: "125cc · 8.7PS · BS6",
+          price: "₹85,200",
+        },
+        {
+          name: "Hero Destini 125",
+          img: "/webui/scooters/images/destini125.avif",
+          specs: "125cc · 9PS · 55kmpl",
+          price: "₹82,190",
+        },
+        {
+          name: "Yamaha Fascino 125",
+          img: "/webui/scooters/images/fascino125.avif",
+          specs: "125cc · Hybrid",
+          price: "₹80,500",
+        },
+        {
+          name: "TVS Jupiter",
+          img: "/webui/scooters/images/jupiter.avif",
+          specs: "110cc · 50kmpl",
+          price: "₹76,738",
+        },
+      ];
 
-const grid = document.getElementById("grid");
+      const grid = document.getElementById("grid");
 
-scooters.forEach(s => {
-  const card = document.createElement("div");
-  card.className = "card";
-  card.innerHTML = `
+      scooters.forEach((s) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+    <a href="${s.link}" class="card-link">
     <img src="${s.img}" />
     <div class="title">${s.name}</div>
     <div class="specs">${s.specs}</div>
     <div class="price">${s.price} onwards</div>
     <div class="btn-row">
-      <a class="btn" href="#">View Details</a>
-      <a class="btn" href="#">On-Road Price</a>
+      <a class="btn" href="${s.link}">View Details</a>
+      <a class="btn" href="${s.onroadlink}">On-Road Price</a>
     </div>
+    </a>
   `;
-  grid.appendChild(card);
-});
-</script>
- <script>
+        grid.appendChild(card);
+      });
+    </script>
+    <script>
       fetch("/webui/navbar.html")
         .then((res) => res.text())
         .then((data) => (document.getElementById("navbar").innerHTML = data));
-  </script>
+    </script>
 
-  <script>
+    <script>
       fetch("/webui/footer.html")
         .then((res) => res.text())
         .then((data) => (document.getElementById("footer").innerHTML = data));
-  </script>
-
-</body>
+    </script>
+  </body>
 </html>
