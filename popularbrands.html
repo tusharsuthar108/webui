@@ -19,17 +19,39 @@
 
     main{max-width:var(--max-w);margin:18px auto;padding:0 18px}
     h2{margin:6px 0 14px}
-    .brand-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .brand-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:16px}
+    @media (min-width: 1200px){ .brand-grid{grid-template-columns:repeat(4,1fr)}}
     @media (max-width:1100px){ .brand-grid{grid-template-columns:repeat(3,1fr)}}
-    @media (max-width:760px){ .brand-grid{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:480px){ .brand-grid{grid-template-columns:1fr}}
+    @media (max-width:760px){ .brand-grid{grid-template-columns:repeat(2,1fr); gap:12px}}
+    @media (max-width:480px){ .brand-grid{grid-template-columns:1fr; gap:10px}}
 
-    .brand-card{background:var(--card);padding:18px;border-radius:12px;display:flex;align-items:center;gap:12px;box-shadow:0 8px 20px rgba(0,0,0,0.04)}
-    .brand-card img{width:72px;height:56px;object-fit:contain}
-    .brand-card h3{margin:0;font-size:16px}
-    .brand-meta{color:var(--muted);font-size:13px}
-    .search{display:flex;gap:8px;margin-bottom:18px}
-    .chip{padding:8px 10px;border-radius:10px;background:#fff;border:1px solid #eee;color:var(--muted);font-weight:600}
+    .brand-card{background:var(--card);padding:18px;border-radius:12px;display:flex;align-items:center;gap:12px;box-shadow:0 8px 20px rgba(0,0,0,0.04);transition:transform 0.2s ease, box-shadow 0.2s ease;height:100%}
+    .brand-card:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(0,0,0,0.08)}
+    .brand-card img{width:72px;height:56px;object-fit:contain;flex-shrink:0}
+    .brand-card h3{margin:0;font-size:16px;line-height:1.3}
+    .brand-meta{color:var(--muted);font-size:13px;line-height:1.4;margin-top:4px}
+    .search{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+    .chip{padding:8px 10px;border-radius:10px;background:#fff;border:1px solid #eee;color:var(--muted);font-weight:600;cursor:pointer;transition:all 0.2s ease;white-space:nowrap}
+    .chip:hover{border-color:var(--brand-orange);color:var(--brand-orange)}
+    
+    @media (max-width:760px){
+      main{padding:0 12px}
+      .brand-card{padding:15px;gap:10px;flex-direction:column;text-align:center}
+      .brand-card img{width:60px;height:48px}
+      .brand-card h3{font-size:15px}
+      .brand-meta{font-size:12px}
+      .search{flex-direction:column}
+      .search input{margin-bottom:8px}
+    }
+    
+    @media (max-width:480px){
+      main{padding:0 10px}
+      h2{font-size:18px}
+      .brand-card{padding:12px}
+      .brand-card img{width:50px;height:40px}
+      .brand-card h3{font-size:14px}
+      .brand-meta{font-size:11px}
+    }
   </style>
 </head>
 <body>
@@ -51,29 +73,41 @@
 
   <script>
     const brands = [
-      {id:'honda',name:'Honda',logo:'/webui/images/honda.png',desc:'Reliable, popular commuter bikes'},
-      {id:'hero',name:'Hero',logo:'/webui/images/hero.png',desc:'Top selling mass-market bikes'},
-      {id:'yamaha',name:'Yamaha',logo:'/webui/images/yamaha.png',desc:'Sporty & performance models'},
-      {id:'ktm',name:'KTM',logo:'/webui/images/ktm.png',desc:'Performance & offroad oriented'},
-      {id:'royalenfield',name:'Royal Enfield',logo:'/webui/images/re.png',desc:'Cruisers and retro bikes'},
-      {id:'bajaj',name:'Bajaj',logo:'/webui/images/bajajbike.png',desc:'Affordable segment leaders'},
-      {id:'suzuki',name:'Suzuki',logo:'/webui/images/suzuki.png',desc:'Pan-Asian maker with variety'},
-      {id:'tvs',name:'tvs',logo:'/webui/images/tvs.png',desc:'Concept brand demo'}
+      {id:'honda',name:'Honda',logo:'images/honda.png',desc:'Reliable, popular commuter bikes'},
+      {id:'hero',name:'Hero',logo:'images/hero.png',desc:'Top selling mass-market bikes'},
+      {id:'yamaha',name:'Yamaha',logo:'images/yamaha.png',desc:'Sporty & performance models'},
+      {id:'ktm',name:'KTM',logo:'images/ktm.png',desc:'Performance & offroad oriented'},
+      {id:'royalenfield',name:'Royal Enfield',logo:'images/re.png',desc:'Cruisers and retro bikes'},
+      {id:'bajaj',name:'Bajaj',logo:'images/bajajbike.png',desc:'Affordable segment leaders'},
+      {id:'suzuki',name:'Suzuki',logo:'images/suzuki.png',desc:'Pan-Asian maker with variety'},
+      {id:'tvs',name:'TVS',logo:'images/tvs.png',desc:'Innovation and performance focused'}
     ];
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
 
     function renderBrands(list){
       const grid = document.getElementById('brandGrid');
+      if (!grid) {
+        console.error('Brand grid element not found');
+        return;
+      }
+      
       grid.innerHTML='';
       list.forEach(b=>{
         const el = document.createElement('article');
         el.className='brand-card';
         el.innerHTML = `
-          <img src="${b.logo}" alt="${b.name} logo">
+          <img src="${escapeHtml(b.logo)}" alt="${escapeHtml(b.name)} logo" 
+               onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNTYiIHZpZXdCb3g9IjAgMCA3MiA1NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjcyIiBoZWlnaHQ9IjU2IiBmaWxsPSIjRjNGNEY2Ii8+Cjx0ZXh0IHg9IjM2IiB5PSIyOCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEwIiBmaWxsPSIjOUNBM0FGIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj5Mb2dvPC90ZXh0Pgo8L3N2Zz4K'">
           <div>
-            <h3>${b.name}</h3>
-            <div class="brand-meta">${b.desc}</div>
+            <h3>${escapeHtml(b.name)}</h3>
+            <div class="brand-meta">${escapeHtml(b.desc)}</div>
             <div style="margin-top:8px">
-              <a class="chip" style="text-decoration:none" href="newbikes.html">View models</a>
+              <a class="chip" style="text-decoration:none" href="newbikes.html" aria-label="View ${escapeHtml(b.name)} models">View models</a>
             </div>
           </div>
         `;
@@ -82,23 +116,61 @@
     }
 
     function filterBrands(){
-      const q = document.getElementById('brandSearch').value.toLowerCase().trim();
-      if(!q){ renderBrands(brands); return; }
-      renderBrands(brands.filter(b=>b.name.toLowerCase().includes(q)));
+      const searchInput = document.getElementById('brandSearch');
+      if (!searchInput) return;
+      
+      const q = searchInput.value.toLowerCase().trim();
+      if(!q){ 
+        renderBrands(brands); 
+        return; 
+      }
+      const filtered = brands.filter(b=>b.name.toLowerCase().includes(q));
+      renderBrands(filtered);
     }
 
-    renderBrands(brands);
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.getElementById('brandSearch');
+      if (searchInput) {
+        searchInput.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            filterBrands();
+          }
+        });
+      }
+      
+      // Initial render
+      renderBrands(brands);
+    });
   </script>
   <script>
-      fetch("/webui/navbar.html")
-        .then((res) => res.text())
-        .then((data) => (document.getElementById("navbar").innerHTML = data));
-    </script>
+    // Secure function to load HTML content with error handling
+    function loadHTMLContent(url, elementId) {
+      const element = document.getElementById(elementId);
+      if (!element) {
+        console.error(`Element with ID '${elementId}' not found`);
+        return;
+      }
+      
+      fetch(url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.text();
+        })
+        .then((data) => {
+          element.innerHTML = data;
+        })
+        .catch((error) => {
+          console.error(`Error loading ${url}:`, error);
+          element.innerHTML = `<div class="error">Failed to load content</div>`;
+        });
+    }
 
-    <script>
-      fetch("/webui/footer.html")
-        .then((res) => res.text())
-        .then((data) => (document.getElementById("footer").innerHTML = data));
-    </script>
+    // Load components with error handling
+    loadHTMLContent("navbar.html", "navbar");
+    loadHTMLContent("footer.html", "footer");
+  </script>
 </body>
 </html>

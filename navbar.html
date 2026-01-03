@@ -21,10 +21,11 @@
     padding: 12px 40px;
     border-bottom: 1px solid #e5e5e5;
     background: #fff;
+    flex-wrap: wrap;
   }
 
   .logo img {
-    height: 40px;
+    height: 80px;
   }
 
   .search-box {
@@ -34,6 +35,8 @@
     border: 1px solid #ddd;
     border-radius: 35px;
     width: 500px;
+    max-width: 100%;
+    min-width: 250px;
   }
   .search-box input {
     width: 100%;
@@ -49,6 +52,7 @@
     align-items: center;
     gap: 25px;
     font-size: 13px;
+    flex-wrap: wrap;
   }
   .nav-item {
     cursor: pointer;
@@ -58,6 +62,7 @@
     color: #555;
     position: relative;
     padding: 8px 12px;
+    white-space: nowrap;
   }
   .nav-item i {
     font-size: 14px;
@@ -74,9 +79,10 @@
     background: white;
     border: 1px solid #ddd;
     border-radius: 6px;
-    z-index: 50;
+    z-index: 999;
     margin-top: 5px;
     min-width: 180px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
   .drop div {
     padding: 10px 14px;
@@ -90,12 +96,7 @@
   }
 
   /* Show dropdown on nav-item hover */
-  .nav-item:hover .drop {
-    display: block;
-  }
-
-  /* Keep dropdown visible when hovering over it */
-  .drop:hover {
+  .nav-item:hover > .drop {
     display: block;
   }
 
@@ -109,6 +110,7 @@
     font-size: 14px;
     font-weight: 500;
     border-bottom: 1px solid #e5e5e5;
+    flex-wrap: wrap;
   }
   .navbar2-item {
     position: relative;
@@ -214,12 +216,91 @@
     transform: rotate(180deg);
     color: #d30000;
   }
+
+  /* Mobile Menu Toggle */
+  .mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .navbar1 {
+      flex-direction: column;
+      gap: 15px;
+      padding: 15px 20px;
+    }
+    
+    .search-box {
+      width: 100%;
+      max-width: none;
+    }
+    
+    .nav-actions {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .navbar2 {
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 15px 20px;
+      justify-content: center;
+    }
+    
+    .navbar2-item {
+      font-size: 13px;
+    }
+    
+    .submenu {
+      position: static;
+      display: none;
+      width: 100%;
+      box-shadow: none;
+      border: none;
+      background: #f8f9fa;
+      margin-top: 10px;
+    }
+    
+    .navbar2-item.mobile-open .submenu {
+      display: block;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .navbar1 {
+      padding: 10px 15px;
+    }
+    
+    .logo img {
+      height: 30px;
+    }
+    
+    .nav-actions {
+      font-size: 12px;
+    }
+    
+    .navbar2 {
+      justify-content: center;
+      text-align: center;
+    }
+    
+    .navbar2-item {
+      padding: 8px 6px;
+      font-size: 12px;
+    }
+  }
 </style>
 
 <!-- ---------- NAVBAR STRUCTURE ---------- -->
 <div class="navbar1">
   <div class="logo">
-    <img src="https://stimg.cardekho.com/pwa/img/bikedekho-logo.svg" />
+    <a href="/index.html"><img src="/images/logo.jpg" alt="Logo" /></a>
   </div>
 
   <div class="search-box">
@@ -229,7 +310,7 @@
 
   <div class="nav-actions">
     <!-- Language -->
-    <div class="nav-item">
+    <!-- <div class="nav-item">
       <i class="fa-solid fa-language"></i>
       <span id="langLabel">Language</span>
       <i class="fa-solid fa-chevron-down caret"></i>
@@ -237,16 +318,16 @@
         <div onclick="setLanguage('English')">English</div>
         <div onclick="setLanguage('Hindi')">हिंदी</div>
       </div>
-    </div>
+    </div> -->
 
     <!-- User -->
     <div class="nav-item">
       <i class="fa-regular fa-user"></i>
-      <a href="/webui/login.html"><span>Login / Register</span></a>
+      <a href="/login.html" style="color: #333; text-decoration: none;"><span>Login / Register</span></a>
     </div>
 
     <!-- City -->
-    <div class="nav-item">
+    <!-- <div class="nav-item">
       <i class="fa-solid fa-location-dot"></i>
       <span id="cityLabel">Vadodara</span>
       <i class="fa-solid fa-chevron-down caret"></i>
@@ -259,7 +340,7 @@
         <div onclick="setCity('Pune')">Pune</div>
         <div onclick="setCity('Bangalore')">Bangalore</div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 
@@ -267,24 +348,24 @@
   <div class="navbar2-item">
     Bikes <i class="fa-solid fa-chevron-down caret"></i>
     <div class="submenu">
-      <a href="/webui/newbikes.html">New Bikes</a>
+      <a href="/newbikes.html">New Bikes</a>
       <div class="submenu-wrapper">
-        <a href="#">Best Bikes</a>
+        <a href="/newbikes.html">Best Bikes</a>
         <div class="sub-submenu">
-          <a href="/webui/royal-enfield/royal-enfield.html">Royal Enfield Hunter 350</a>
-          <a href="/webui/royal-enfield/re_gtcontinental.html">Royal Enfield Continental GT 650</a>
-          <a href="/webui//herobikes/splendor_plus.html">Hero Splendor Plus</a>
-          <a href="#">Hero Splendor Plus XTEC</a>
-          <a href="#">Royal Enfield Bullet 350</a>
-          <a href="#">All Best Bikes</a>
+          <a href="/royal-enfield/royal-enfield.html">Royal Enfield Hunter 350</a>
+          <a href="/royal-enfield/re_gtcontinental.html">Royal Enfield Continental GT 650</a>
+          <a href="/herobikes/splendor_plus.html">Hero Splendor Plus</a>
+          <a href="/herobikes/splendor_plus.html">Hero Splendor Plus XTEC</a>
+          <a href="/">Royal Enfield Bullet 350</a>
+          <a href="/newbikes.html">All Best Bikes</a>
         </div>
       </div>
-      <a href="/webui/upcoming/upcoming.html">Upcoming Bikes</a>
+      <a href="/upcoming/upcoming.html">Upcoming Bikes</a>
       
       
-      <a href="/webui/popularbrands.html">Popular Brands</a>
-      <a href="/webui/bikeoffers.html">Bike Offers</a>
-      <a href="/webui/showrooms.html">Showrooms</a>
+      <a href="/popularbrands.html">Popular Brands</a>
+      <a href="/bikeoffers.html">Bike Offers</a>
+      <a href="showrooms.html">Showrooms</a>
       
     </div>
   </div>
@@ -292,9 +373,9 @@
   <div class="navbar2-item">
     Scooters <i class="fa-solid fa-chevron-down caret"></i>
     <div class="submenu">
-      <a href="/webui/Scooters/new_scooters.html">New Scooters</a>
-      <a href="/webui/Scooters/best_scooters.html">Best Scooters</a>
-      <a href="/webui/upcoming/upcoming_scooters.html">Upcoming Scooters</a>
+      <a href="/Scooters/new_scooters.html">New Scooters</a>
+      <a href="/Scooters/best_scooters.html">Best Scooters</a>
+      <a href="/upcoming/upcoming_scooters.html">Upcoming Scooters</a>
       
     </div>
   </div>
@@ -312,7 +393,7 @@
   <div class="navbar2-item">
     Bike Finance <i class="fa-solid fa-chevron-down caret"></i>
     <div class="submenu">
-      <a href="/webui/finance.html">Finance Discount Offers</a>
+      <a href="/finance.html">Finance Discount Offers</a>
       
     </div>
   </div>
@@ -335,14 +416,19 @@
   </div>
 </div>
 
-<script>
-  function setLanguage(lang) {
-    document.getElementById("langLabel").textContent = lang;
-  }
-  function setCity(city) {
-    document.getElementById("cityLabel").textContent = city;
-  }
-</script>
+  <script>
+    function setLanguage(lang) {
+      const langLabel = document.getElementById("langLabel");
+      if (langLabel) {
+        langLabel.textContent = lang;
+      }
+    }
+    
+    function setCity(city) {
+      const cityLabel = document.getElementById("cityLabel");
+      if (cityLabel) {
+        cityLabel.textContent = city;
+      }
+    }
+  </script>
 
-  </body>
-</html>

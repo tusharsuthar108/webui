@@ -54,11 +54,11 @@
 
   <script>
     const offers = [
-      {title:'Special EMI offer on Cruiser 350',img:'/webui/images/avenger_cruise.avif',tag:'EMI',desc:'6 months @ 0% interest',valid:'Valid till 30 Nov 2025'},
-      {title:'Exchange bonus on Hunter 350',img:'/webui/royal-enfield/images/re_hunter_londonred.avif',tag:'Exchange',desc:'Up to ₹7,000 off',valid:'Valid till 31 Dec 2025'},
-      {title:'Festival cashback on Classic 350',img:'/webui/images/re_classic350.avif',tag:'Cashback',desc:'₹5,000 instant cashback',valid:'Valid till 15 Dec 2025'},
-      {title:'Free accessories on Bullet 350',img:'/webui/images/re_bullet350.avif',tag:'Accessories',desc:'Helmet + jacket free',valid:'Limited period'},
-      {title:'Long-term warranty on Vintage 650',img:'/webui/images/tvs_ronin.avif',tag:'Warranty',desc:'5-year extended warranty',valid:'Contact dealer'}
+      {title:'Special EMI offer on Cruiser 350',img:'/images/avenger_cruise.avif',tag:'EMI',desc:'6 months @ 0% interest',valid:'Valid till 30 Nov 2025'},
+      {title:'Exchange bonus on Hunter 350',img:'/royal-enfield/images/re_hunter_londonred.avif',tag:'Exchange',desc:'Up to ₹7,000 off',valid:'Valid till 31 Dec 2025'},
+      {title:'Festival cashback on Classic 350',img:'/images/re_classic350.avif',tag:'Cashback',desc:'₹5,000 instant cashback',valid:'Valid till 15 Dec 2025'},
+      {title:'Free accessories on Bullet 350',img:'/images/re_bullet350.avif',tag:'Accessories',desc:'Helmet + jacket free',valid:'Limited period'},
+      {title:'Long-term warranty on Vintage 650',img:'/images/tvs_ronin.avif',tag:'Warranty',desc:'5-year extended warranty',valid:'Contact dealer'}
     ];
 
     function renderOffers(){
@@ -94,13 +94,13 @@
   </script>
 
   <script>
-      fetch("/webui/navbar.html")
+      fetch("navbar.html")
         .then((res) => res.text())
         .then((data) => (document.getElementById("navbar").innerHTML = data));
   </script>
 
   <script>
-      fetch("/webui/footer.html")
+      fetch("footer.html")
         .then((res) => res.text())
         .then((data) => (document.getElementById("footer").innerHTML = data));
   </script>

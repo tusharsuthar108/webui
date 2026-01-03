@@ -37,11 +37,11 @@
 
   <script>
     const shops = [
-      {name:'Downtown Motors',city:'Mumbai',addr:'Linking Road, Bandra',phone:'022-1234567',img:'/webui/images/location1.jpg'},
-      {name:'City Bikes Showroom',city:'Pune',addr:'FC Road',phone:'020-9876543',img:'/webui/images/location2.jpg'},
-      {name:'Royal Wheelers',city:'Delhi',addr:'Connaught Place',phone:'011-3344556',img:'/webui/images/location3.jpg'},
-      {name:'Metro Bike Hub',city:'Bengaluru',addr:'MG Road',phone:'080-6789123',img:'/webui/images/location4.jpg'},
-      {name:'Northside Motors',city:'Chennai',addr:'Anna Salai',phone:'044-5566778',img:'/webui/images/location1.jpg'},
+      {name:'Downtown Motors',city:'Mumbai',addr:'Linking Road, Bandra',phone:'022-1234567',img:'images/location1.jpg'},
+      {name:'City Bikes Showroom',city:'Pune',addr:'FC Road',phone:'020-9876543',img:'images/location2.jpg'},
+      {name:'Royal Wheelers',city:'Delhi',addr:'Connaught Place',phone:'011-3344556',img:'images/location3.jpg'},
+      {name:'Metro Bike Hub',city:'Bengaluru',addr:'MG Road',phone:'080-6789123',img:'images/location4.jpg'},
+      {name:'Northside Motors',city:'Chennai',addr:'Anna Salai',phone:'044-5566778',img:'images/location1.jpg'},
     ];
 
     function renderShops(list=shops){
@@ -78,13 +78,13 @@
     renderShops();
   </script>
   <script>
-      fetch("/webui/navbar.html")
+      fetch("navbar.html")
         .then((res) => res.text())
         .then((data) => (document.getElementById("navbar").innerHTML = data));
     </script>
 
     <script>
-      fetch("/webui/footer.html")
+      fetch("footer.html")
         .then((res) => res.text())
         .then((data) => (document.getElementById("footer").innerHTML = data));
     </script>

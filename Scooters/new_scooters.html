@@ -120,7 +120,7 @@
       const scooters = [
         {
           name: "Honda Activa 6G",
-          img: "/webui/scooters/images/activa6g.avif",
+          img: "images/activa6g.avif",
           specs: "109cc · 7.7PS · FI Engine",
           price: "₹76,234",
           link: "honda_activa.html",
@@ -128,31 +128,31 @@
         },
         {
           name: "TVS Ntorq 125",
-          img: "/webui/scooters/images/ntorq125.avif",
+          img: "images/ntorq125.avif",
           specs: "125cc · 9.3PS · 50kmpl",
           price: "₹90,641",
         },
         {
           name: "Suzuki Access 125",
-          img: "/webui/scooters/images/access125.avif",
+          img: "images/access125.avif",
           specs: "125cc · 8.7PS · BS6",
           price: "₹85,200",
         },
         {
           name: "Hero Destini 125",
-          img: "/webui/scooters/images/destini125.avif",
+          img: "images/destini125.avif",
           specs: "125cc · 9PS · 55kmpl",
           price: "₹82,190",
         },
         {
           name: "Yamaha Fascino 125",
-          img: "/webui/scooters/images/fascino125.avif",
+          img: "images/fascino125.avif",
           specs: "125cc · Hybrid",
           price: "₹80,500",
         },
         {
           name: "TVS Jupiter",
-          img: "/webui/scooters/images/jupiter.avif",
+          img: "images/jupiter.avif",
           specs: "110cc · 50kmpl",
           price: "₹76,738",
         },
@@ -179,13 +179,13 @@
       });
     </script>
     <script>
-      fetch("/webui/navbar.html")
+      fetch("../navbar.html")
         .then((res) => res.text())
         .then((data) => (document.getElementById("navbar").innerHTML = data));
     </script>
 
     <script>
-      fetch("/webui/footer.html")
+      fetch("../footer.html")
         .then((res) => res.text())
         .then((data) => (document.getElementById("footer").innerHTML = data));
     </script>

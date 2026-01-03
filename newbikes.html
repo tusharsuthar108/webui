@@ -168,6 +168,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
       }
       .section-title {
         font-size: 20px;
@@ -186,9 +188,16 @@
         max-width: var(--max-w);
         margin: 0 auto;
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: var(--gap);
         padding: 0 16px;
+      }
+      
+      /* Responsive grid adjustments */
+      @media (min-width: 1200px) {
+        .grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
       }
       @media (max-width: 1024px) {
         .grid {
@@ -198,14 +207,23 @@
       @media (max-width: 768px) {
         .grid {
           grid-template-columns: repeat(2, 1fr);
+          gap: 12px;
         }
         .hero-content {
           grid-template-columns: 1fr;
+        }
+        .section-header {
+          flex-direction: column;
+          align-items: flex-start;
         }
       }
       @media (max-width: 480px) {
         .grid {
           grid-template-columns: 1fr;
+          gap: 10px;
+        }
+        .section-title {
+          font-size: 18px;
         }
       }
 
@@ -219,6 +237,7 @@
         flex-direction: column;
         transition: all 0.2s;
         border: 1px solid #e5e7eb;
+        height: 100%;
       }
       .card:hover {
         box-shadow: 0 4px 12px rgb(176, 10, 10);
@@ -229,6 +248,7 @@
         background-size: cover;
         background-position: center;
         background-color: #f9fafb;
+        flex-shrink: 0;
       }
       .card .body {
         padding: 14px;
@@ -241,11 +261,13 @@
         font-size: 15px;
         margin: 0 0 6px;
         color: var(--dark);
+        line-height: 1.3;
       }
       .specs {
         color: var(--muted);
         font-size: 12px;
         margin-bottom: 8px;
+        line-height: 1.4;
       }
       .price-row {
         display: flex;
@@ -253,15 +275,19 @@
         align-items: center;
         margin-top: auto;
         padding-top: 8px;
+        flex-wrap: wrap;
+        gap: 8px;
       }
       .price {
         color: var(--brand-orange);
         font-weight: 800;
         font-size: 15px;
+        white-space: nowrap;
       }
       .card-actions {
         display: flex;
         gap: 6px;
+        flex-wrap: wrap;
       }
       .btn-small {
         padding: 6px 12px;
@@ -271,6 +297,7 @@
         border: none;
         cursor: pointer;
         transition: all 0.2s;
+        white-space: nowrap;
       }
       .btn-view {
         background: var(--brand-orange);
@@ -287,6 +314,42 @@
       .btn-compare:hover {
         border-color: var(--brand-orange);
         color: var(--brand-orange);
+      }
+      
+      /* Mobile card adjustments */
+      @media (max-width: 768px) {
+        .card .media {
+          height: 140px;
+        }
+        .card .body {
+          padding: 12px;
+        }
+        .title {
+          font-size: 14px;
+        }
+        .price {
+          font-size: 14px;
+        }
+        .btn-small {
+          padding: 5px 10px;
+          font-size: 11px;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .price-row {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+        .card-actions {
+          width: 100%;
+          justify-content: space-between;
+        }
+        .btn-small {
+          flex: 1;
+          text-align: center;
+        }
       }
 
       /* Load More */
@@ -311,13 +374,22 @@
         background: var(--brand-orange);
         color: #fff;
       }
+      
+      @media (max-width: 480px) {
+        .btn-load {
+          padding: 10px 30px;
+          font-size: 13px;
+          width: 100%;
+          max-width: 200px;
+        }
+      }
     </style>
   </head>
   <body>
     <div id="navbar"></div>
     <main>
       <!-- Hero Section -->
-      <section class="hero">
+      <!-- <section class="hero">
         <div class="hero-content">
           <div class="hero-left">
             <h2>Explore New Bikes</h2>
@@ -359,7 +431,7 @@
             </div>
           </aside>
         </div>
-      </section>
+      </section> -->
 
       <!-- Grid Section -->
       <section class="grid-section">
@@ -385,63 +457,63 @@
         {
           id: 1,
           name: "Avenger Cruise 220",
-          img: "/webui/images/avenger_cruise.avif",
+          img: "images/avenger_cruise.avif",
           specs: "150cc · 14PS · Disc",
           price: "₹1.15 Lakh",
         },
         {
           id: 2,
           name: "Hunter 350",
-          img: "/webui/royal-enfield/images/re_hunter_londonred.avif",
+          img: "royal-enfield/images/re_hunter_londonred.avif",
           specs: "110cc · 8.5PS · Drum",
           price: "₹1,68,500",
         },
         {
           id: 3,
           name: "Classic 350",
-          img: "/webui/images/re_classic350.avif",
+          img: "images/re_classic350.avif",
           specs: "350cc · 20PS · ABS",
           price: "₹2.05 Lakh",
         },
         {
           id: 4,
           name: "Bullet 350",
-          img: "/webui/images/re_bullet350.avif",
+          img: "images/re_bullet350.avif",
           specs: "250cc · 30PS · ABS",
           price: "₹1.85 Lakh",
         },
         {
           id: 5,
           name: "Ronin 125",
-          img: "/webui/images/tvs_ronin.avif",
+          img: "images/tvs_ronin.avif",
           specs: "125cc · 10PS · CBS",
           price: "₹82,900",
         },
         {
           id: 6,
           name: "GT Continental 650",
-          img: "/webui/royal-enfield/images/re_gt_red.avif",
+          img: "royal-enfield/images/re_gt_red.avif",
           specs: "650cc · 47PS · Twin",
           price: "₹3.25 Lakh",
         },
         {
           id: 7,
           name: "Splendor Plus",
-          img: "/webui/herobikes/images/hero_splendor_blackonly.avif",
+          img: "herobikes/images/hero_splendor_blackonly.avif",
           specs: "100cc · 47PS · Twin",
           price: "₹90,000 Lakh",
         },
         {
           id: 8,
           name: "Hunter 350",
-          img: "/webui/royal-enfield/images/re_hunter_riowhite.avif",
+          img: "royal-enfield/images/re_hunter_riowhite.avif",
           specs: "650cc · 47PS · Twin",
           price: "₹3.25 Lakh",
         },
         {
           id: 9,
           name: "Vintage 650",
-          img: "/webui/royal-enfield/images/re_hunter_tokyoblack.avif",
+          img: "royal-enfield/images/re_hunter_tokyoblack.avif",
           specs: "650cc · 47PS · Twin",
           price: "₹3.25 Lakh",
           link: "royal-enfield.html",
@@ -449,102 +521,142 @@
       ];
 
       let showCount = 4;
+      let filteredBikes = [...bikes];
 
       function renderGrid() {
         const grid = document.getElementById("bike-grid");
+        if (!grid) {
+          console.error('Grid element not found');
+          return;
+        }
+        
         grid.innerHTML = "";
-        for (let i = 0; i < Math.min(showCount, bikes.length); i++) {
-          const b = bikes[i];
+        const bikesToShow = filteredBikes.slice(0, Math.min(showCount, filteredBikes.length));
+        
+        bikesToShow.forEach(b => {
           const card = document.createElement("article");
           card.className = "card";
           card.innerHTML = `
-            <div class="media" style="background-image:url('${b.img}')"></div>
+            <div class="media" style="background-image:url('${b.img}')" 
+                 onerror="this.style.backgroundImage='url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE2MCIgdmlld0JveD0iMCAwIDIwMCAxNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMTYwIiBmaWxsPSIjRjNGNEY2Ii8+Cjx0ZXh0IHg9IjEwMCIgeT0iODAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzlDQTNBRiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+SW1hZ2UgTm90IEZvdW5kPC90ZXh0Pgo8L3N2Zz4K)'"></div>
             <div class="body">
-              <h3 class="title">${b.name}</h3>
-              <div class="specs">${b.specs}</div>
+              <h3 class="title">${escapeHtml(b.name)}</h3>
+              <div class="specs">${escapeHtml(b.specs)}</div>
               <div class="price-row">
-                <div class="price">${b.price}</div>
+                <div class="price">${escapeHtml(b.price)}</div>
                 <div class="card-actions">
-                  <button class="btn-small btn-view" onclick="view(${b.id})">View</button>
-                  <button class="btn-small btn-compare" onclick="compare(${b.id})">Compare</button>
+                  <button class="btn-small btn-view" onclick="view(${b.id})" aria-label="View ${escapeHtml(b.name)} details">View</button>
+                  <button class="btn-small btn-compare" onclick="compare(${b.id})" aria-label="Compare ${escapeHtml(b.name)}">Compare</button>
                 </div>
               </div>
             </div>
           `;
           grid.appendChild(card);
+        });
+        
+        const loadMoreBtn = document.getElementById("loadMore");
+        if (loadMoreBtn) {
+          loadMoreBtn.style.display = showCount >= filteredBikes.length ? "none" : "inline-block";
         }
-        document.getElementById("loadMore").style.display =
-          showCount >= bikes.length ? "none" : "inline-block";
+      }
+
+      function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
       }
 
       function applySearch() {
-        const q = document.getElementById("search").value.toLowerCase().trim();
+        const searchInput = document.getElementById("search");
+        if (!searchInput) return;
+        
+        const q = searchInput.value.toLowerCase().trim();
         if (!q) {
+          filteredBikes = [...bikes];
           showCount = 4;
-          renderGrid();
-          return;
+        } else {
+          filteredBikes = bikes.filter(b => b.name.toLowerCase().includes(q));
+          showCount = filteredBikes.length;
         }
-        const grid = document.getElementById("bike-grid");
-        grid.innerHTML = "";
-        bikes
-          .filter((b) => b.name.toLowerCase().includes(q))
-          .forEach((b) => {
-            const card = document.createElement("article");
-            card.className = "card";
-            card.innerHTML = `
-              <div class="media" style="background-image:url('${b.img}')"></div>
-              <div class="body">
-                <h3 class="title">${b.name}</h3>
-                <div class="specs">${b.specs}</div>
-                <div class="price-row">
-                  <div class="price">${b.price}</div>
-                  <div class="card-actions">
-                    <button class="btn-small btn-view" onclick="view(${b.id})">View</button>
-                    <button class="btn-small btn-compare" onclick="compare(${b.id})">Compare</button>
-                  </div>
-                </div>
-              </div>
-            `;
-            grid.appendChild(card);
-          });
-        document.getElementById("loadMore").style.display = "none";
+        renderGrid();
       }
 
       function view(id) {
-        alert("Open bike detail: " + id);
+        const bike = bikes.find(b => b.id === id);
+        if (bike) {
+          alert(`Viewing details for: ${bike.name}`);
+          // In a real app, this would navigate to a detail page
+        }
       }
 
       function compare(id) {
-        alert("Add to compare: " + id);
+        const bike = bikes.find(b => b.id === id);
+        if (bike) {
+          alert(`Added ${bike.name} to comparison`);
+          // In a real app, this would add to comparison list
+        }
       }
 
-      document.getElementById("loadMore").addEventListener("click", () => {
-        showCount += 4;
+      // Event listeners
+      document.addEventListener('DOMContentLoaded', function() {
+        const loadMoreBtn = document.getElementById("loadMore");
+        if (loadMoreBtn) {
+          loadMoreBtn.addEventListener("click", () => {
+            showCount += 4;
+            renderGrid();
+          });
+        }
+
+        // Filter chip functionality
+        document.querySelectorAll('.chip').forEach(chip => {
+          chip.addEventListener('click', function() {
+            document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+          });
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById("search");
+        if (searchInput) {
+          searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+              applySearch();
+            }
+          });
+        }
+
+        // Initial render
         renderGrid();
       });
-
-      // Filter chip functionality
-      document.querySelectorAll('.chip').forEach(chip => {
-        chip.addEventListener('click', function() {
-          document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-          this.classList.add('active');
-        });
-      });
-
-      // Initial render
-      renderGrid();
-      
     </script>
     <script>
-      fetch("/webui/navbar.html")
-        .then((res) => res.text())
-        .then((data) => (document.getElementById("navbar").innerHTML = data));
-    </script>
+      // Secure function to load HTML content with error handling
+      function loadHTMLContent(url, elementId) {
+        const element = document.getElementById(elementId);
+        if (!element) {
+          console.error(`Element with ID '${elementId}' not found`);
+          return;
+        }
+        
+        fetch(url)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+          })
+          .then((data) => {
+            element.innerHTML = data;
+          })
+          .catch((error) => {
+            console.error(`Error loading ${url}:`, error);
+            element.innerHTML = `<div class="error">Failed to load content</div>`;
+          });
+      }
 
-    <script>
-      fetch("/webui/footer.html")
-        .then((res) => res.text())
-        .then((data) => (document.getElementById("footer").innerHTML = data));
+      // Load components with error handling
+      loadHTMLContent("navbar.html", "navbar");
+      loadHTMLContent("footer.html", "footer");
     </script>
   </body>
 </html>

@@ -1,24 +1,175 @@
 <style>
   .hero {
-    height: 350px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    background: #fff;
+    padding: 40px 20px;
     text-align: center;
-    background: linear-gradient(#e7f0ff, #cfdbff);
+    border-radius: 10px;
+    margin: 30px auto;
+    max-width: 1100px;
+    border: 1px solid #ddd;
   }
+  
   .hero h1 {
-    font-size: 42px;
-    margin-bottom: 10px;
+    font-size: clamp(28px, 5vw, 42px);
+    margin-bottom: 15px;
+    font-weight: 700;
+    color: #333;
+    font-family: 'Inter', sans-serif;
   }
+  
   .hero p {
-    font-size: 18px;
-    opacity: 0.9;
+    font-size: clamp(16px, 3vw, 20px);
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .hero-images {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+  }
+  
+  .hero-bike {
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .hero-bike:hover {
+    transform: translateY(-5px);
+  }
+  
+  .hero-bike img {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #eee;
+  }
+  
+  .hero-bike span {
+    display: block;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .hero-buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .hero-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .hero-btn.primary {
+    background: #d32f2f;
+    color: #fff;
+  }
+  
+  .hero-btn.primary:hover {
+    background: #b71c1c;
+  }
+  
+  .hero-btn.secondary {
+    background: #fff;
+    color: #d32f2f;
+    border: 2px solid #d32f2f;
+  }
+  
+  .hero-btn.secondary:hover {
+    background: #d32f2f;
+    color: #fff;
+  }
+  
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .hero {
+      margin: 20px;
+      padding: 30px 15px;
+    }
+    
+    .hero-images {
+      gap: 15px;
+    }
+    
+    .hero-bike img {
+      width: 100px;
+      height: 70px;
+    }
+    
+    .hero-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .hero-btn {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero {
+      margin: 15px;
+      padding: 25px 10px;
+    }
+    
+    .hero h1 {
+      margin-bottom: 12px;
+    }
+    
+    .hero-bike img {
+      width: 80px;
+      height: 60px;
+    }
   }
 </style>
 
 <div class="hero">
-  <h1>Welcome To Bikes</h1>
-  <p>Search, Compare & Find the best Bikes and Scooters</p>
+  <h1>Welcome To BikeUi</h1>
+  <p>Search, Compare & Find the best Bikes and Scooters with detailed specifications and pricing</p>
+  
+  <div class="hero-images">
+    <div class="hero-bike" onclick="window.location.href='/royal-enfield/re_hunteremi.html'">
+      <img src="/royal-enfield/images/re_hunterhomepic.avif" alt="Royal Enfield Hunter 350">
+      <span>Hunter 350</span>
+    </div>
+    <div class="hero-bike" onclick="window.location.href='/Scooters/honda_activa.html'">
+      <img src="/Scooters/images/activa6g.avif" alt="Honda Activa 6G">
+      <span>Activa 6G</span>
+    </div>
+    <div class="hero-bike" onclick="window.location.href='/herobikes/splendor_plus.html'">
+      <img src="/herobikes/images/hero_homepic.avif" alt="Hero Splendor Plus">
+      <span>Splendor Plus</span>
+    </div>
+    <div class="hero-bike" onclick="window.location.href='/royal-enfield/re_gtcontinental.html'">
+      <img src="/royal-enfield/images/re_gt_homepic.avif" alt="Royal Enfield GT">
+      <span>GT Continental</span>
+    </div>
+  </div>
+  
+  <div class="hero-buttons">
+    <a href="/newbikes.html" class="hero-btn primary">Browse All Bikes</a>
+    <a href="/bikeoffers.html" class="hero-btn secondary">View Offers</a>
+  </div>
 </div>
