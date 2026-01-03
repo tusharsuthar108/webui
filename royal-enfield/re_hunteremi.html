@@ -1,267 +1,376 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hunter 350 On-Road Price – Vadodara</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hunter 350 On-Road Price – Vadodara</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #f5f5f5;
-      margin: 0;
-      padding: 0;
-    }
-
-    .main-container {
-      display: flex;
-      flex-wrap: wrap;
-      max-width: 1100px;
-      margin: 30px auto;
-      gap: 20px;
-    }
-
-    .left-panel {
-      flex: 1 1 300px;
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      border: 1px solid #ddd;
-    }
-
-    .left-panel img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-
-    .bike-title {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .rating {
-      font-size: 14px;
-      color: #ff9800;
-      margin-bottom: 10px;
-    }
-
-    .price {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .left-panel button {
-      width: 100%;
-      padding: 12px;
-      background: #d32f2f;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-bottom: 10px;
-      font-size: 15px;
-    }
-
-    .left-panel button:hover {
-      background: #b71c1c;
-    }
-
-    .other-bikes {
-      margin-top: 15px;
-    }
-
-    .other-bike {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-      cursor: pointer;
-    }
-
-    .other-bike img {
-      width: 40%;
-      border-radius: 6px;
-    }
-
-    .other-bike span {
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    .right-panel {
-      flex: 2 1 600px;
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      border: 1px solid #ddd;
-    }
-
-    .variant-box {
-      border: 1px solid #eee;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      background: #fafafa;
-    }
-
-    .variant-header {
-      padding: 12px 15px;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      font-size: 16px;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .variant-content {
-      display: none;
-      padding: 12px 15px;
-    }
-
-    .price-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 6px 0;
-      border-bottom: 1px dashed #ddd;
-      font-size: 14px;
-      color: #444;
-    }
-
-    .price-row:last-child {
-      border-bottom: none;
-    }
-
-    .emi-section {
-      margin-top: 10px;
-      display: flex;
-      justify-content: space-between;
-      font-size: 14px;
-    }
-
-    .emi-section a {
-      text-decoration: none;
-      color: #1976d2;
-    }
-
-    .get-emi-btn {
-      margin-top: 10px;
-      padding: 10px 14px;
-      background: #d32f2f;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .get-emi-btn:hover {
-      background: #b71c1c;
-    }
-
-    @media (max-width: 900px) {
-      .main-container {
-        flex-direction: column;
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background: #f5f5f5;
+        margin: 0;
+        padding: 0;
       }
-    }
-  </style>
-</head>
-<body>
+
+      .main-container {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 1100px;
+        margin: 30px auto;
+        gap: 20px;
+      }
+
+      .left-panel {
+        flex: 1 1 300px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+      }
+
+      .left-panel img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 15px;
+      }
+
+      .bike-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .rating {
+        font-size: 14px;
+        color: #ff9800;
+        margin-bottom: 10px;
+      }
+
+      .price {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .left-panel button {
+        width: 100%;
+        padding: 12px;
+        background: #d32f2f;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-bottom: 10px;
+        font-size: 15px;
+      }
+
+      .left-panel button:hover {
+        background: #b71c1c;
+      }
+
+      .other-bikes {
+        margin-top: 15px;
+      }
+
+      .other-bike {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+      }
+
+      .other-bike img {
+        width: 40%;
+        border-radius: 6px;
+      }
+
+      .other-bike span {
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .right-panel {
+        flex: 2 1 600px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+      }
+
+      .variant-box {
+        border: 1px solid #eee;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        background: #fafafa;
+      }
+
+      .variant-header {
+        padding: 12px 15px;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        font-size: 16px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .variant-content {
+        display: none;
+        padding: 12px 15px;
+      }
+
+      .price-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 6px 0;
+        border-bottom: 1px dashed #ddd;
+        font-size: 14px;
+        color: #444;
+      }
+
+      .price-row:last-child {
+        border-bottom: none;
+      }
+
+      .emi-section {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+      }
+
+      .emi-section a {
+        text-decoration: none;
+        color: #1976d2;
+      }
+
+      .get-emi-btn {
+        margin-top: 10px;
+        padding: 10px 14px;
+        background: #d32f2f;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .get-emi-btn:hover {
+        background: #b71c1c;
+      }
+
+      @media (max-width: 900px) {
+        .main-container {
+          flex-direction: column;
+          margin: 20px auto;
+          padding: 0 15px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .main-container {
+          margin: 15px auto;
+          padding: 0 10px;
+          gap: 15px;
+        }
+
+        .left-panel,
+        .right-panel {
+          padding: 15px;
+        }
+
+        .bike-title {
+          font-size: 16px;
+        }
+
+        .other-bike {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .other-bike img {
+          width: 80px;
+        }
+
+        .variant-header {
+          font-size: 14px;
+          padding: 10px 12px;
+        }
+
+        .price-row {
+          font-size: 13px;
+          flex-wrap: wrap;
+        }
+
+        .emi-section {
+          flex-direction: column;
+          gap: 8px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .main-container {
+          margin: 10px auto;
+          padding: 0 8px;
+          gap: 12px;
+        }
+
+        .left-panel,
+        .right-panel {
+          padding: 12px;
+        }
+
+        .bike-title {
+          font-size: 15px;
+        }
+
+        .rating,
+        .price {
+          font-size: 13px;
+        }
+
+        .left-panel button {
+          padding: 10px;
+          font-size: 14px;
+        }
+
+        .variant-header {
+          font-size: 13px;
+          padding: 8px 10px;
+        }
+
+        .price-row {
+          font-size: 12px;
+        }
+
+        .get-emi-btn {
+          padding: 8px 12px;
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
     <div id="navbar"></div>
-  <div class="main-container">
-    <!-- LEFT PANEL -->
-    <div class="left-panel">
-      <img src="/royal-enfield/images/re_hunter_londonred.avif" alt="Royal Enfield Hunter 350" />
-      <div class="bike-title">Royal Enfield Hunter 350</div>
-      <div class="rating">⭐ 4.4 | 1.18k Reviews</div>
-      <div class="price">₹1,37,640 Onwards</div>
-      <a href="/finance.html"><button class="btn">View Finance Offers</button></a>
+    <div class="main-container">
+      <!-- LEFT PANEL -->
+      <div class="left-panel">
+        <img
+          src="/royal-enfield/images/re_hunter_londonred.avif"
+          alt="Royal Enfield Hunter 350"
+        />
+        <div class="bike-title">Royal Enfield Hunter 350</div>
+        <div class="rating">⭐ 4.4 | 1.18k Reviews</div>
+        <div class="price">₹1,37,640 Onwards</div>
+        <a href="/finance.html"
+          ><button class="btn">View Finance Offers</button></a
+        >
 
-      <div class="other-bikes">
-        <div class="other-bike">
-          <img src="/royal-enfield/images/re_bullet350.avif" />
-          <span>Royal Enfield Bullet 350<br>₹1,60,420 Onwards</span>
+        <div class="other-bikes">
+          <div class="other-bike">
+            <img src="/images/re_bullet350.avif" />
+            <span>Royal Enfield Bullet 350<br />₹1,60,420 Onwards</span>
+          </div>
+          <div class="other-bike">
+            <img src="/images/re_classic350.avif" />
+            <span>Royal Enfield Classic 350<br />₹1,81,118 Onwards</span>
+          </div>
         </div>
-        <div class="other-bike">
-          <img src="/royal-enfield/images/re_classic350.avif" />
-          <span>Royal Enfield Classic 350<br>₹1,81,118 Onwards</span>
+      </div>
+
+      <!-- RIGHT PANEL -->
+      <div class="right-panel">
+        <!-- Variant Base -->
+        <div class="variant-box">
+          <div class="variant-header" onclick="toggleVariant(this)">
+            <span>Base</span>
+            <span>▼</span>
+          </div>
+          <div class="variant-content">
+            <div class="price-row">
+              <span>Ex-Showroom Price</span><span>₹1,37,640</span>
+            </div>
+            <div class="price-row"><span>RTO</span><span>₹8,258</span></div>
+            <div class="price-row">
+              <span>Insurance</span><span>₹11,005</span>
+            </div>
+            <div class="price-row">
+              <span>On-Road Price in Vadodara</span><span>₹1,56,903*</span>
+            </div>
+            <div class="emi-section">
+              <span>EMI: ₹4,527/mo</span>
+              <a href="#">EMI Calculator</a>
+            </div>
+            <button class="get-emi-btn">Get EMI Offers</button>
+          </div>
+        </div>
+
+        <!-- Variant Mid -->
+        <div class="variant-box">
+          <div class="variant-header" onclick="toggleVariant(this)">
+            <span>Mid</span>
+            <span>▼</span>
+          </div>
+          <div class="variant-content">
+            <div class="price-row">
+              <span>Ex-Showroom Price</span><span>₹1,62,292</span>
+            </div>
+            <div class="price-row"><span>RTO</span><span>₹9,737</span></div>
+            <div class="price-row">
+              <span>Insurance</span><span>₹11,419</span>
+            </div>
+            <div class="price-row">
+              <span>On-Road Price in Vadodara</span><span>₹1,83,448*</span>
+            </div>
+            <div class="emi-section">
+              <span>EMI: ₹5,315/mo</span>
+              <a href="#">EMI Calculator</a>
+            </div>
+            <button class="get-emi-btn">Get EMI Offers</button>
+          </div>
+        </div>
+
+        <!-- Variant Top -->
+        <div class="variant-box">
+          <div class="variant-header" onclick="toggleVariant(this)">
+            <span>Top</span>
+            <span>▼</span>
+          </div>
+          <div class="variant-content">
+            <div class="price-row">
+              <span>Ex-Showroom Price</span><span>₹1,66,883</span>
+            </div>
+            <div class="price-row"><span>RTO</span><span>₹10,012</span></div>
+            <div class="price-row">
+              <span>Insurance</span><span>₹11,496</span>
+            </div>
+            <div class="price-row">
+              <span>On-Road Price in Vadodara</span><span>₹1,88,391*</span>
+            </div>
+            <div class="emi-section">
+              <span>EMI: ₹5,442/mo</span>
+              <a href="#">EMI Calculator</a>
+            </div>
+            <button class="get-emi-btn">Get EMI Offers</button>
+          </div>
         </div>
       </div>
     </div>
+    <div id="footer"></div>
 
-    <!-- RIGHT PANEL -->
-    <div class="right-panel">
-      <!-- Variant Base -->
-      <div class="variant-box">
-        <div class="variant-header" onclick="toggleVariant(this)">
-          <span>Base</span>
-          <span>▼</span>
-        </div>
-        <div class="variant-content">
-          <div class="price-row"><span>Ex-Showroom Price</span><span>₹1,37,640</span></div>
-          <div class="price-row"><span>RTO</span><span>₹8,258</span></div>
-          <div class="price-row"><span>Insurance</span><span>₹11,005</span></div>
-          <div class="price-row"><span>On-Road Price in Vadodara</span><span>₹1,56,903*</span></div>
-          <div class="emi-section">
-            <span>EMI: ₹4,527/mo</span>
-            <a href="#">EMI Calculator</a>
-          </div>
-          <button class="get-emi-btn">Get EMI Offers</button>
-        </div>
-      </div>
-
-      <!-- Variant Mid -->
-      <div class="variant-box">
-        <div class="variant-header" onclick="toggleVariant(this)">
-          <span>Mid</span>
-          <span>▼</span>
-        </div>
-        <div class="variant-content">
-          <div class="price-row"><span>Ex-Showroom Price</span><span>₹1,62,292</span></div>
-          <div class="price-row"><span>RTO</span><span>₹9,737</span></div>
-          <div class="price-row"><span>Insurance</span><span>₹11,419</span></div>
-          <div class="price-row"><span>On-Road Price in Vadodara</span><span>₹1,83,448*</span></div>
-          <div class="emi-section">
-            <span>EMI: ₹5,315/mo</span>
-            <a href="#">EMI Calculator</a>
-          </div>
-          <button class="get-emi-btn">Get EMI Offers</button>
-        </div>
-      </div>
-
-      <!-- Variant Top -->
-      <div class="variant-box">
-        <div class="variant-header" onclick="toggleVariant(this)">
-          <span>Top</span>
-          <span>▼</span>
-        </div>
-        <div class="variant-content">
-          <div class="price-row"><span>Ex-Showroom Price</span><span>₹1,66,883</span></div>
-          <div class="price-row"><span>RTO</span><span>₹10,012</span></div>
-          <div class="price-row"><span>Insurance</span><span>₹11,496</span></div>
-          <div class="price-row"><span>On-Road Price in Vadodara</span><span>₹1,88,391*</span></div>
-          <div class="emi-section">
-            <span>EMI: ₹5,442/mo</span>
-            <a href="#">EMI Calculator</a>
-          </div>
-          <button class="get-emi-btn">Get EMI Offers</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="footer"></div>
-
-
-
-  <script>
-    function toggleVariant(el) {
-      const content = el.nextElementSibling;
-      content.style.display = content.style.display === "block" ? "none" : "block";
-    }
-  </script>
-   <script>
+    <script>
+      function toggleVariant(el) {
+        const content = el.nextElementSibling;
+        content.style.display =
+          content.style.display === "block" ? "none" : "block";
+      }
+    </script>
+    <script>
       fetch("/navbar.html")
         .then((res) => res.text())
         .then((data) => (document.getElementById("navbar").innerHTML = data));
@@ -272,7 +381,5 @@
         .then((res) => res.text())
         .then((data) => (document.getElementById("footer").innerHTML = data));
     </script>
-
-
-</body>
+  </body>
 </html>

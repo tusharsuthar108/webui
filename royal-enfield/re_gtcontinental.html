@@ -511,18 +511,165 @@
       @media (max-width: 1000px) {
         .container {
           grid-template-columns: 1fr;
+          margin: 20px auto;
+          padding: 15px;
         }
         .hero {
           grid-template-columns: 1fr;
         }
         .img-panel {
           width: 100%;
+          height: 300px;
         }
         .specs-grid {
           grid-template-columns: repeat(2, 1fr);
         }
         .thumb-grid {
           grid-template-columns: repeat(3, 1fr);
+        }
+        .re-section {
+          padding: 20px;
+        }
+        .re-card {
+          min-width: 250px;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .container {
+          margin: 15px auto;
+          padding: 12px;
+        }
+        
+        .left {
+          padding: 15px;
+        }
+        
+        .img-panel {
+          height: 250px;
+        }
+        
+        .title-row h1 {
+          font-size: 18px;
+        }
+        
+        .price {
+          font-size: 18px;
+        }
+        
+        .cta {
+          flex-direction: column;
+        }
+        
+        .btn {
+          width: 100%;
+          text-align: center;
+        }
+        
+        .specs-grid {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+        
+        .variant {
+          flex-direction: column;
+          text-align: center;
+          gap: 10px;
+        }
+        
+        .re-section {
+          padding: 15px;
+        }
+        
+        .re-section h2 {
+          font-size: 20px;
+        }
+        
+        .re-card {
+          min-width: 200px;
+        }
+        
+        .side-card {
+          padding: 12px;
+        }
+        
+        .emi {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .container {
+          margin: 10px auto;
+          padding: 8px;
+        }
+        
+        .left {
+          padding: 12px;
+        }
+        
+        .img-panel {
+          height: 200px;
+        }
+        
+        .title-row h1 {
+          font-size: 16px;
+        }
+        
+        .price {
+          font-size: 16px;
+        }
+        
+        .btn {
+          padding: 8px 12px;
+          font-size: 13px;
+        }
+        
+        .card {
+          padding: 12px;
+        }
+        
+        .card h3 {
+          font-size: 14px;
+        }
+        
+        .card p {
+          font-size: 13px;
+        }
+        
+        .spec {
+          padding: 8px;
+          font-size: 12px;
+        }
+        
+        .variant {
+          padding: 10px;
+        }
+        
+        .re-section {
+          padding: 12px;
+        }
+        
+        .re-section h2 {
+          font-size: 18px;
+        }
+        
+        .re-card {
+          min-width: 150px;
+        }
+        
+        .side-card {
+          padding: 10px;
+        }
+        
+        .side-card h4 {
+          font-size: 14px;
+        }
+        
+        .nearby li {
+          padding: 8px 0;
+          font-size: 13px;
         }
       }
     </style>
